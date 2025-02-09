@@ -1,0 +1,1 @@
+<img src="https://raw.githubusercontent.com/EasterCompany/Dexter-Client/refs/heads/LTS/web/favicon.ico"/>

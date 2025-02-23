@@ -1,0 +1,9 @@
+User-agent: Googlebot
+Disallow: /static/
+Disallow: /downloads/
+Disallow: /README.md
+
+User-agent: *
+Allow: /
+
+Sitemap: https://oceaster.github.io/sitemap.xml

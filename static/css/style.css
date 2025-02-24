@@ -20,7 +20,6 @@ body {
   background: #101010;
 }
 
-/* Web Styles */
 header {
   display: flex;
   flex-direction: column;
@@ -86,11 +85,14 @@ header>div>div>a {
 
 @media (min-width: 1368px) {
   header>div>div {
+    margin-left: 32px;
     flex-direction: row;
   }
   header>div>div>a {
-    width: 20%;
-    margin: 0 32px;
+    margin: 0 16px;
+  }
+  a {
+    width: 164px;
   }
 }
 
@@ -162,6 +164,18 @@ h4 {
   color: #909090;
   font-size: 16px;
   margin: 0 0 0 0;
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+i {
+  margin: auto 3px;
 }
 
 ul {

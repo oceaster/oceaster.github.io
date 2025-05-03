@@ -171,21 +171,37 @@
         margin: 28px auto;
         border-color: #aaa;
       }
-      h2 {
-        text-align: center;
-        margin: 5% 0;
+      h1, h2 {
+        text-align: left;
+        margin: 5% 0 2.5% 0;
+      }
+      .fr,
+      .fc {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        background-color: red;
+        padding: 0;
+        border: 1px solid black;
+      }
+      .fr {
+        flex-direction: row;
+      }
+      .fc {
+        flex-direction: column;
       }
       #showcase {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: middle;
-        justify-content: flex-start;
-        overflow-x: scroll;
+        justify-content: space-evenly;
+        overflow-x: hidden;
         overflow-y: hidden;
         width: 90%;
         height: fit-content;
         margin: 0 auto;
-        padding-bottom: 28px;
       }
       #showcase>a {
         color: #dadada;
@@ -202,7 +218,7 @@
         width: 256px;
         max-width: 256px;
         height: 386px;
-        margin: 0 32px;
+        margin: 32px 2px;
         border: 1px solid #dadada;
         border-radius: 4px;
       }
@@ -250,8 +266,18 @@
         <header>
           <img src="https://oceaster.github.io/static/assets/profile.jpg" alt="profile"/>
           <div>
-            <h1>Hi, I'm Owen Easter 👋</h1>
-            <p>I am a software engineer based in the Highlands of Scotland, with over 10 years of experience in the industry designing, developing, and deploying software products of all shapes and sizes in industries such as Banking, VR, AI, Biomedial Research and more...</p>
+            <h1>Hi there! I'm Owen Easter, 👋</h1>
+            <p>an AI Software Engineer based in the Highlands of Scotland, designing, developing, and deploying products of all shapes and sizes in industries such as Banking, VR, AI, Biomedial Research and more...</p>
+            <h2>Highlights</h2>
+            <p>
+              &nbsp;&nbsp;- Technical Lead @ Easter Company<br/>
+              &nbsp;&nbsp;- Spear Headed open source federated learning models (AI)
+                  in the EU health sector @ Aridhia<br/>
+              &nbsp;&nbsp;- Lead software enigneer for multiple projects @ EmperiaVR<br/>
+              &nbsp;&nbsp;- Core maintainer @ bashful-sh<br/>
+              &nbsp;&nbsp;- Significant contributor to many popular open source projects.
+            </p>
+            <h2>Contact</h2>
             <b>Email</b><i>owen@easter.company</i>
             <br/>
             <b>Mobile No.</b><i>+447506624694</i>

@@ -157,6 +157,7 @@
         padding: calc(2.5% + 32px);
       }
       article>header>*>img {
+        user-select: none;
         width: 186px;
         height: auto;
         border-radius: 50%;
@@ -286,6 +287,17 @@
         box-shadow: 1px 4px 10px rgba(20, 20, 29, 0.45);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
+      }
+      @media only screen and (max-width: 975px) {
+        article>header {
+          flex-direction: column;
+        }
+        article>header>div {
+          width: 100%;
+        }
+        article>header>div>img {
+          margin: 0 auto;
+        }
       }
     </style>
   </head>

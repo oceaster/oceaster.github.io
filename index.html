@@ -156,15 +156,55 @@
         margin: 0 auto;
         padding: calc(2.5% + 32px);
       }
-      article>header>img {
+      article>header>*>img {
         width: 186px;
         height: auto;
-        margin-right: 5%;
         border-radius: 50%;
       }
       article>header>div {
         display: flex;
+        justify-content: flex-start;
         flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+        padding: 2.5%;
+      }
+      #phb {
+        overflow: hidden;
+        margin: 10% 0 0 0;
+      }
+      #phb>div, #phb>a>div {
+        cursor: pointer;
+        user-select: none;
+
+        width: 100%;
+        min-height: 68px;
+        height: 68px;
+        max-height: 68px;
+
+        margin: 0;
+        padding: 0 0 0 5%;
+
+        text-align: left;
+        font-family: Poppins;
+        font-size: 15px;
+
+        outline: none;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0.5px solid #dadada;
+        border-radius: 0;
+      }
+      #phb>div:hover, #phb>a>div:hover {
+        background-color: #3a3a3a3a;
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
+        box-shadow: 0 1px 8px #fff;
+      }
+      #phb>div>i, #phb>a>div>i {
+        padding: 12px;
+        margin: 12px;
       }
       hr {
         width: 90%;
@@ -262,9 +302,17 @@
     <main id="content">
       <div class='background'>
       </div>
-      <article class="glass">
-        <header>
-          <img src="https://oceaster.github.io/static/assets/profile.jpg" alt="profile"/>
+      <article>
+        <header class="glass">
+          <div>
+            <img src="https://oceaster.github.io/static/assets/profile.jpg" alt="profile"/>
+            <div id="phb">
+              <a><div><i class='bx bxs-cube'></i>Setup</div></a>
+              <a><div><i class='bx bxs-lock-alt'></i>Secret</div></a>
+              <a><div><i class='bx bxs-share'></i>Share</div></a>
+              <a><div><i class='bx bxs-donate-heart'></i>Support</div></a>
+            </div>
+          </div>
           <div>
             <h1>Hi there! I'm Owen Easter, 👋</h1>
             <p>an AI Software Engineer based in the Highlands of Scotland, designing, developing, and deploying products of all shapes and sizes in industries such as Banking, VR, AI, Biomedial Research and more...</p>
@@ -283,6 +331,9 @@
             <b>Mobile No.</b><i>+447506624694</i>
           </div>
         </header>
+      </article>
+
+<!--
         <div id="showcase">
           <a href="https://easter.company">
             <div>
@@ -324,7 +375,11 @@
         <h2>My Skills</h2>
         <div id="skills">
         </div>
-      </article>
+
+-->
+
+
+
     </main>
     <!-- Entry Script -->
     <script>

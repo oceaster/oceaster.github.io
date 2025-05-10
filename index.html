@@ -40,6 +40,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" />
     <!-- Default Style -->
     <style>
+      .f {display:flex;}
+      .r {flex-direction:row;}
+      .c {flex-direction:column;}
+      .block {display:block;}
+      .fixed {display:fixed;}
+      .cc {display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+      .hide {pointer-events:none;opacity:0;}
+      .glass {background-color:rgba(20, 20, 29, 0.45); border-radius: 4px; box-shadow: 1px 4px 10px rgba(20, 20, 29, 0.45); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);}
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -54,107 +62,95 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #9d9d9d9d;
       }
-      #initial-loading-screen-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        color: #dadada;
-        background-color: #202029;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Urbanist', sans-serif;
-        opacity: 1;
-        visibility: visible;
-        transition: opacity 1.5s, visibility 1.5s;
-      }
-      #initial-loading-screen-container.fade-out {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-      #initial-loading-screen-icon {
-        width: 184px;
-        height: auto;
-        border-radius: 50%;
-        margin-bottom: 20px;
-        object-fit: cover;
-      }
+      a {color:#dadada;font-weight:200;text-decoration:none;}
+      a:hover{text-decoration:underline;}
+      h1, h2 {text-align: left; margin: 5% 0 2.5% 0;}
       body {
+        z-index: 0;
         display: flex;
         position: fixed;
         flex-direction: column;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+
         top: 0;
         left: 0;
+
+        min-width: 100vw;
         width: 100vw;
         max-width: 100vw;
+
+        min-height: 100vh;
         height: 100vh;
-        max-height: 100vw;
+        max-height: 100vh;
+
         margin: unset;
         padding: unset;
+
         color: #dadada;
         background: #202029;
         font-family: 'Urbanist', sans-serif;
       }
       main {
+        z-index: 1;
         display: flex;
-        position: relative;
+        position: fixed;
         flex-direction: column;
         overflow-x: hidden;
-        overflow-y: hidden;
-        width: 100%;
-        max-width: 1180px;
-        min-height: calc(100vh - 5vh - 32px);
-        height: fit-content;
-        margin: 0 auto;
-        padding: 0 0 0 0;
-        border-radius: 6px;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 1.5s, visibility 1.5s;
-      }
-      main.fade-in {
-        opacity: 1;
-        visibility: visible;
+        overflow-y: scroll;
+
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        max-width: 100vw;
+
+        min-height: 100vh;
+        height: 100vh;
+        max-height: 100vh;
+
+        margin: 0;
+        padding: 0;
+        transition: 1.5s ease-in-out;
       }
       nav {
+        z-index: 99;
         display: flex;
         position: relative;
         flex-direction: row;
         width: 100%;
         max-width: 1180px;
-        min-height: 48px;
-        height: 5vh;
+        min-height: 64px;
+        height: 64px;
         max-height: 64px;
-        margin: 16px auto;
-        padding: 0 0;
-        border-radius: 8px;
+        margin: 16px auto 0 auto;
       }
       article {
-        overflow-x: hidden;
-        overflow-y: auto;
-        width: 100%;
-        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        min-width: 300px;
+        width: 100vw;
+        max-width: 1180px;
         height: fit-content;
+
         margin: 0 auto;
-        padding: 0 0;
+        padding: 0;
       }
       article>header {
         display: flex;
         flex-direction: row;
         align-items: center;
+        verticle-align: middle;
         justify-content: center;
 
-        width: fit-content;
+        width: 96%;
+        max-width: 1180px;
         height: fit-content;
 
-        margin: 0 auto;
-        padding: calc(2.5% + 32px);
+        margin: 96px auto 16px auto;
+        padding: 84px 2%;
       }
       article>header>*>img {
         user-select: none;
@@ -170,125 +166,162 @@
         height: 100%;
         padding: 2.5%;
       }
+      #ls-cont {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #dadada;
+        background-color: #202029;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Urbanist', sans-serif;
+        opacity: 1;
+        transition: 1.5s ease-in;
+      }
+      #ls-icon {
+        width: 184px;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        object-fit: cover;
+      }
+      #ath {
+        user-select: none;
+        text-align: center;
+        max-width: 148px;
+        margin: 16px auto 0 auto;
+        padding: 2px 8px;
+        border: 0.5px solid #dadada;
+        border-radius: 8px;
+        color: #dadada;
+        background-color: #20209020;
+      }
+      #phi {
+        text-align: center;
+        max-width: 128px;
+        color: #dadada;
+        padding: 2px 8px;
+        margin: 16px auto 0 auto;
+      }
       #phb {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
         overflow: hidden;
-        margin: 10% 0 0 0;
+        max-width: 112px;
+        flex-wrap: wrap;
+        margin: 16px auto 0 auto;
+        padding: 6px 6px;
+        border-radius: 3px;
+      }
+      #phb>a {
+        text-decoration: none;
       }
       #phb>div, #phb>a>div {
         cursor: pointer;
         user-select: none;
 
-        width: 100%;
-        min-height: 68px;
-        height: 68px;
-        max-height: 68px;
+        width: 32px;
+        height: 32px;
 
         margin: 0;
-        padding: 0 0 0 5%;
+        padding: 0 0 0 0;
 
-        text-align: left;
+        text-align: center;
+        verticle-align: middle;
         font-family: Poppins;
-        font-size: 15px;
-
-        outline: none;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 0.5px solid #dadada;
-        border-radius: 0;
-      }
-      #phb>div:hover, #phb>a>div:hover {
-        background-color: #3a3a3a3a;
-        backdrop-filter: blur(9px);
-        -webkit-backdrop-filter: blur(9px);
-        box-shadow: 0 1px 8px #fff;
-      }
-      #phb>div>i, #phb>a>div>i {
-        padding: 12px;
-        margin: 12px;
-      }
-      hr {
-        width: 90%;
-        margin: 28px auto;
-        border-color: #aaa;
-      }
-      h1, h2 {
-        text-align: left;
-        margin: 5% 0 2.5% 0;
-      }
-      .fr,
-      .fc {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-        background-color: red;
-        padding: 0;
-        border: 1px solid black;
-      }
-      .fr {
-        flex-direction: row;
-      }
-      .fc {
-        flex-direction: column;
-      }
-      #showcase {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: middle;
-        justify-content: space-evenly;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        width: 90%;
-        height: fit-content;
-        margin: 0 auto;
-      }
-      #showcase>a {
+        font-size: 32px;
         color: #dadada;
         text-decoration: none;
+        outline: none;
+        background-color: #20202900;
       }
-      #showcase>a>div {
-        cursor: pointer;
+      .tsi {
         display: flex;
         flex-direction: column;
+        text-align: center;
         align-items: center;
-        justify-content: flex-start;
-        overflow: hidden;
-        min-width: 256px;
-        width: 256px;
-        max-width: 256px;
-        height: 386px;
-        margin: 32px 2px;
-        border: 1px solid #dadada;
-        border-radius: 4px;
+        verticle-align: middle;
+        justify-content: center;
+        width: 128px;
+        height: 128px;
+        margin: auto auto;
       }
-      #showcase>a>div>img {
-        width: auto;
-        min-height: 50%;
-        height: 193px;
-        object-fit: contain;
-        border-bottom: 1px solid #dadada;
+      .tsi>i,tsi>img,.tsi>svg {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+        margin: auto 0 0 0;
       }
-      #showcase>a>div>div {
-        height: 193px;
-        padding: 12px;
+      .tsi>h5 {
+        margin: 0 0 0 0;
       }
-      .spin {
-        animation: spin 1s linear infinite;
+      .tsi>h6 {
+        margin:  0 0 auto 0;
+        color: #9a9a9a;
       }
+      .box1 {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        overflow:hidden;
+        width: 96%;
+        height: fit-content;
+        margin: 0 auto 0 auto;
+        padding: 0 2%;
+        border-radius: 0;
+      }
+      .box1>h3 {padding:28px;border-right:1px solid #dadadada;width:25%;}
+      #sh-app { z-index: 99 display: flex; flex-direction: column; position: fixed; pointer-events: all; top: 0; left: 0; width: 100vw; height: 100vh; }
+      .spin1s {animation: spin 1s linear infinite;}
       @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      .glass {
-        background-color: rgba(20, 20, 29, 0.45);
-        border-radius: 4px;
-        box-shadow: 1px 4px 10px rgba(20, 20, 29, 0.45);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
+      .pricing-el {
+        width:100%;
       }
-      @media only screen and (max-width: 685px) {
+      .schedule-button {
+        border: unset;
+        color: white;
+        background-color: transparent;
+        padding: 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100%;
+        height: fit-content;
+        cursor: pointer;
+        border-radius: 0px;
+        border-bottom: 1px solid #dadada3a;
+        transition: background-color 0.3s ease;
+      }
+      .schedule-button:hover {
+        background-color: #9a9a9a25;
+      }
+      @media only screen and (max-width: 1380px) {
+        article>header {
+          margin: 64px auto 0 auto;
+        }
+        nav {
+          top: 0;
+          left: 0;
+          min-width: 100vw;
+          width: 100vw;
+          max-width: 100vw;
+          min-height: 68px;
+          height: 68px;
+          max-height: 68px;
+          margin: 0 0 0 0;
+        }
+        .box1>h3 {padding:28px;border-right:unset;border-bottom:1px solid #dadadada;width:100%;}
+        .tsi {min-width:25%;}
         article>header {
           flex-direction: column;
         }
@@ -298,132 +331,345 @@
         article>header>div>img {
           margin: 0 auto;
         }
+        #phb {
+          width: 100%;
+          max-width: unset;
+          margin: 16px 0 0 0 0;
+        }
+        #phi,#contact2,#phb {
+          display: none;
+        }
       }
     </style>
   </head>
-  <body class="loading">
+  <body>
     <!-- Loading Screen -->
-    <div id="initial-loading-screen-container" class="glass">
-      <img id="initial-loading-screen-icon" src="https://oceaster.github.io/static/assets/signature.svg" alt="signature"/>
-      <p><i class='bx bx-loader spin'></i>&nbsp;&nbsp;Cracking Eggs...</p>
+    <div id="ls-cont" class="glass">
+      <img id="ls-icon" src="https://oceaster.github.io/static/assets/signature.svg" alt="signature"/>
+      <p><i class='bx bx-loader spin1s'></i>&nbsp;&nbsp;Cracking Eggs...</p>
     </div>
     <!-- Persistant Nav Bar -->
     <nav class="glass">
     </nav>
     <!-- Default Content -->
-    <main id="content">
-      <div class='background'>
+    <main>
+      <!-- sh-app -->
+      <div id="sh-app">
       </div>
-      <article>
+      <div id="background" class="background">
+      </div>
+      <article id="main-content">
         <header class="glass">
           <div>
             <img src="https://oceaster.github.io/static/assets/profile.jpg" alt="profile"/>
+            <div id="ath" style="margin:32px auto 32px auto;">Available to Hire</div>
+            <div id="contact" class="cc" style="margin:0 0 auto 0;padding: 0;">
+              <p><b>Email</b><br/><a href="mailto:owen@easter.company"><i>owen@easter.company</i></a></p>
+              <br/>
+              <p><b>Mobile/WhatsApp</b><a href="tel:+447506624694"><br/><i>+447506624694</i></a></p>
+            </div>
             <div id="phb">
-              <a><div><i class='bx bxs-cube'></i>Setup</div></a>
-              <a><div><i class='bx bxs-lock-alt'></i>Secret</div></a>
-              <a><div><i class='bx bxs-share'></i>Share</div></a>
-              <a><div><i class='bx bxs-donate-heart'></i>Support</div></a>
+              <div><i class='bx bxs-terminal' onclick="toggleApp('sh');"></i></div>
+              <div onclick="window.location = 'https://github.com/sponsors/oceaster'"><i class='bx bxs-donate-heart'></i></div>
+              <div onclick="window.location = 'https://github.com/oceaster'"><i class='bx bxl-github'></i></div>
+              <div onclick="window.location = 'https://facebook.com/eastercompany'"><i class='bx bxl-facebook-square'></i></div>
+              <div onclick="window.location = 'https://instagram.com/eastercompany'"><i class='bx bxl-instagram-alt' ></i></div>
+              <div onclick="window.location = 'https://www.youtube.com/@eastercompany'"><i class='bx bxl-youtube' ></i></div>
+            </div>
+            <div id="contact2" style="display:flex;flex-direction:column;width:100%;justify-content:center;align-items:center;text-align:center;">
+              <a href="mailto:owen@easter.company">
+                Contact via Email
+              </a>
+              <a href="tel:+447506624694">
+                Contact via Phone
+              </a>
             </div>
           </div>
           <div>
-            <h1>Hi there! I'm Owen Easter, 👋</h1>
+            <h1 style="margin:0 0 0 0;">Hi there! I'm Owen Easter, 👋</h1>
             <p>an AI Software Engineer based in the Highlands of Scotland, designing, developing, and deploying products of all shapes and sizes in industries such as Banking, VR, AI, Biomedial Research and more...</p>
-            <h2>Highlights</h2>
+            <h2 style="margin:16px 0 8px 0;">Career Highlights</h2>
             <p>
-              &nbsp;&nbsp;- Technical Lead @ Easter Company<br/>
-              &nbsp;&nbsp;- Spear Headed open source federated learning models (AI)
-                  in the EU health sector @ Aridhia<br/>
-              &nbsp;&nbsp;- Lead software enigneer for multiple projects @ EmperiaVR<br/>
-              &nbsp;&nbsp;- Core maintainer @ bashful-sh<br/>
-              &nbsp;&nbsp;- Significant contributor to many popular open source projects.
+              &nbsp;&nbsp;<i class='bx bxs-star' ></i> Over 10 years experience in software development<br/><br/>
+              &nbsp;&nbsp;<i class='bx bxs-star' ></i> Technical Lead, Founder @Easter Company<br/><br/>
+              &nbsp;&nbsp;<i class='bx bxs-star' ></i> Core Maintainer @Bashful<br/><br/>
+              &nbsp;&nbsp;<i class='bx bxs-star' ></i> Significant Contributor @Letta-ai (formerly MemGPT).<br/><br/>
+              &nbsp;&nbsp;<i class='bx bxs-star' ></i> Lead engineering of VR stores for many high-end fashion<br/>&nbsp;&nbsp;and retail clients @Emperia<br/><br/>
+              &nbsp;&nbsp;<i class='bx bxs-star' ></i> Lead research and development for training &amp; inference<br/>&nbsp;&nbsp;of models across biomedical applications utilizing distributed<br/>&nbsp;&nbsp;private networks @Aridhia<br/>
             </p>
-            <h2>Contact</h2>
-            <b>Email</b><i>owen@easter.company</i>
-            <br/>
-            <b>Mobile No.</b><i>+447506624694</i>
+            <div id="pricing-cont" style="display:flex;flex-direction:row;justify-content:space-evenly;align-items:center;text-align:center;width:100%;margin: 32px auto;">
+              <div class="pricing-el">
+                <h2 style="text-align:left;">£180/hour</h2>
+                <h3 style="text-align:left;">contract</h3>
+                <h4 style="text-align:left;">minimum</h4>
+              </div>
+              <hr style="height:100%;"/>
+              <div class="pricing-el">
+                <h2 style="text-align:center;">£4,320/week</h2>
+                <h3 style="text-align:center;">contract</h3>
+                <h4 style="text-align:center;">minimum</h4>
+              </div>
+              <hr style="height:100%;"/>
+              <div class="pricing-el">
+                <h2 style="text-align:right;">£96,000/year</h2>
+                <h3 style="text-align:right;">full time</h3>
+                <h4 style="text-align:right;">minimum</h4>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;width:100%;margin:auto auto;justify-content:space-evenly;align-items:center;text-align:center;">
+              <button class="schedule-button" onclick="createMeeting()"><i class='bx bxs-calendar'></i>&nbsp;&nbsp;Schedule Meeting</button>
+              <button class="schedule-button" onclick="emailOwen()"><i class='bx bxs-envelope'></i>&nbsp;&nbsp;Email</button>
+              <button class="schedule-button" onclick="callOwen()"><i class='bx bxs-phone'></i>&nbsp;&nbsp;Mobile/WhatsApp</button>
+            </div>
           </div>
         </header>
+        <div class="box1 glass" style="border-top-right-radius:6px;border-top-left-radius:6px;">
+          <h3>Traits</h3>
+          <div class="tsi">
+            <i class='bx bx-dumbbell' ></i>
+            <h5>Hard Working</h5>
+            <h6></h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxs-hand-right' ></i>
+            <h5>Direct</h5>
+            <h6></h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxs-briefcase' ></i>
+            <h5>Organised</h5>
+            <h6></h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxs-dog' ></i>
+            <h5>Loyal</h5>
+            <h6></h6>
+          </div>
+        </div>
+        <div class="box1 glass">
+          <h3>Methodologies</h3>
+          <div class="tsi">
+            <i class='bx bxs-grid' ></i>
+            <h5>Micro Services</h5>
+            <h6>within moderation</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bx-align-justify' ></i>
+            <h5>Clean Code</h5>
+            <h6>high standards</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bx-color'></i>
+            <h5>CI/CD</h5>
+            <h6>rapid iteration</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bx-check-double' ></i>
+            <h5>Five Nines</h5>
+            <h6>99.999% uptime</h6>
+          </div>
+        </div>
+        <div class="box1 glass">
+          <h3>Languages</h3>
+          <div class="tsi">
+            <i class='bx bxl-python'></i>
+            <h5>Python</h5>
+            <h6>10 years experience</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-javascript'></i>
+            <h5>JavaScript</h5>
+            <h6>10 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" style="fill:#fff;transform: ;msFilter:;"><path d="M19.24 3H4.76A1.76 1.76 0 0 0 3 4.76v14.48A1.76 1.76 0 0 0 4.76 21h14.48A1.76 1.76 0 0 0 21 19.24V4.76A1.76 1.76 0 0 0 19.24 3zm-5.8 10h-2.25v6.44H9.4V13H7.15v-1.46h6.29zm5.8 5.28a1.71 1.71 0 0 1-.67.74 3 3 0 0 1-1 .39 5.81 5.81 0 0 1-1.2.12 7 7 0 0 1-1.23-.11 4.52 4.52 0 0 1-1-.33v-1.71l-.06-.06h.06v.07a3.41 3.41 0 0 0 1 .54 3.06 3.06 0 0 0 1.13.2 2.58 2.58 0 0 0 .6-.06 1.47 1.47 0 0 0 .42-.17.75.75 0 0 0 .25-.25.69.69 0 0 0-.06-.74 1.24 1.24 0 0 0-.35-.33 3.12 3.12 0 0 0-.53-.3l-.67-.28a3.57 3.57 0 0 1-1.37-1 2 2 0 0 1-.46-1.33 2.16 2.16 0 0 1 .24-1.06 2.09 2.09 0 0 1 .66-.71 2.88 2.88 0 0 1 1-.42 5.11 5.11 0 0 1 1.19-.13 7 7 0 0 1 1.09.07 4.53 4.53 0 0 1 .88.23v1.65a2.42 2.42 0 0 0-.42-.24 3.58 3.58 0 0 0-.49-.17 3 3 0 0 0-.49-.1 2.45 2.45 0 0 0-.46 0 2.29 2.29 0 0 0-.56.06 1.54 1.54 0 0 0-.43.16.78.78 0 0 0-.26.25.63.63 0 0 0-.09.33.62.62 0 0 0 .1.35 1.19 1.19 0 0 0 .3.29 2.15 2.15 0 0 0 .46.28l.63.28a6.56 6.56 0 0 1 .84.42 2.65 2.65 0 0 1 .64.49 1.79 1.79 0 0 1 .42.63 2.48 2.48 0 0 1 .14.85 2.68 2.68 0 0 1-.25 1.08z"></path></svg>
+            <h5>TypeScript</h5>
+            <h6>5 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-go-lang'></i>
+            <h5>Go</h5>
+            <h6>3 years exp.</h6>
+          </div>
+        </div>
+        <div class="box1 glass">
+          <h3>Infrastructure</h3>
+          <div class="tsi">
+            <i class='bx bxl-docker'></i>
+            <h5>Docker</h5>
+            <h6>5 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-kubernetes'></i>
+            <h5>Kubernetes</h5>
+            <h6>3 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-aws'></i>
+            <h5>AWS</h5>
+            <h6>5 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bx-cloud'></i>
+            <h5>Redis Cloud</h5>
+            <h6>3 years exp.</h6>
+          </div>
+        </div>
+        <div class="box1 glass">
+          <h3>Web Libraries</h3>
+          <div class="tsi">
+            <i class='bx bxl-flask'></i>
+            <h5>Flask</h5>
+            <h6>10 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-react'></i>
+            <h5>React Native</h5>
+            <h6>5 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bx-server' ></i>
+            <h5>Fiber</h5>
+            <h6>3 years exp.</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxs-server' ></i>
+            <h5>Nginx</h5>
+            <h6>with systemd</h6>
+          </div>
+        </div>
+        <div class="box1 glass">
+          <h3>AI/ML Operations</h3>
+          <div class="tsi">
+            <i class='bx bxs-torch' ></i>
+            <h5>PyTorch</h5>
+            <h6>for Training</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxs-chip' ></i>
+            <h5>Cuda</h5>
+            <h6>for Nvidia</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-c-plus-plus' ></i>
+            <h5>Llama.cpp</h5>
+            <h6>for Python</h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxs-face' ></i>
+            <h5>Hugging Face</h5>
+            <h6>for Open Source</h6>
+          </div>
+        </div>
+        <div class="box1 glass" style="border-bottom-right-radius:6px;border-bottom-left-radius:6px;margin:0 0 96px 0;">
+          <h3>Supported Platforms</h3>
+          <div class="tsi">
+            <i class='bx bxl-tux'></i>
+            <h5>Linux</h5>
+            <h6></h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-microsoft'></i>
+            <h5>Windows</h5>
+            <h6></h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-apple' ></i>
+            <h5>Apple+</h5>
+            <h6></h6>
+          </div>
+          <div class="tsi">
+            <i class='bx bxl-android' ></i>
+            <h5>Android</h5>
+            <h6></h6>
+          </div>
+        </div>
+        <h3 style="width:100%;text-align:center;">Partners &amp; Clients</h3>
+        <div style="padding: 128px 0;display:flex;justify-content:space-between;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="32px" viewBox="0 0 133 16" fill="none" class="d-inline-block align-top me-xl-1" alt="EMPERIA"><path d="M0.8125 15.5H16.3324V13.1755H3.29138V8.82726H16.2943V6.50328H0.8125V15.5Z" fill="#D6DBE4"></path> <path d="M0.8125 2.8103V0.5H16.3324V2.8103H0.8125Z" fill="#D6DBE4"></path> <path d="M37.1147 0.5L30.6616 9.60665L24.1006 0.5H20.5979V15.5H23.0767V3.12534L29.1123 11.4799H32.2243L38.2868 2.8382V15.5H40.7657V0.5H37.1147Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M45.284 0.5H55.4286C60.0226 0.513674 61.8952 2.0041 61.8952 5.68232C61.8952 9.40155 60.0091 10.8783 55.3881 10.8783H47.7629V15.5H45.284V0.5ZM47.7629 8.55378H55.954C58.5002 8.55378 59.4163 7.73336 59.4163 5.68232C59.4163 3.64494 58.5002 2.82452 55.954 2.82452H47.7629V8.55378Z" fill="#D6DBE4"></path> <path d="M66.1233 15.5H81.6432V13.1755H68.6022V8.82726H80.8214V6.50273H68.6022V2.82452H81.4681V0.5H66.1233V15.5Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M100.539 8.69052C102.17 9.14175 102.789 10.2083 102.789 12.4234C102.789 13.6677 102.911 14.7343 103.193 15.5H100.593C100.378 14.7069 100.324 13.6951 100.324 12.4234C100.324 10.6048 99.5425 10.0442 97.2253 10.0442H88.3875V15.5H85.9086V0.5H96.7672C101.024 0.513674 102.708 1.71696 102.708 5.20374C102.708 7.10438 102.062 8.15725 100.539 8.69052ZM88.3875 2.82452V7.70602H97.2253C99.4751 7.70602 100.243 7.06335 100.243 5.20374C100.243 3.42616 99.4751 2.82452 97.2253 2.82452H88.3875Z" fill="#D6DBE4"></path> <path d="M107.203 15.5H109.682V0.5H107.203V15.5Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M132.812 15.5H130.037L128.111 12.0953H116.956L115.029 15.5H112.254L120.984 0.5H124.096L132.812 15.5ZM122.533 2.20921L118.263 9.77074H126.804L122.533 2.20921Z" fill="#D6DBE4"></path></svg>
+          <svg id="Layer_1" fill="#D6DBE4" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 175.031 35.302" xml:space="preserve" width="175" height="32" viewBox="0 0 175.031 35.302" width="175.03px" version="1.1" y="0px" x="0px" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"><defs><rect id="SVGID_1_" width="177.73" height="38.714"/></defs><metadata id="metadata274"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata><rect id="rect236" y="9.826" x="162.28" height="8.328" width=".933"/><g id="g238"><clipPath id="SVGID_2_"><use id="use244" overflow="visible" xlink:href="#SVGID_1_"/></clipPath><path id="path246" d="m10.284 25.956c-4.579 0-8.284-3.705-8.284-8.256v-13.329h0.935v9.509c1.371-2.654 4.142-4.462 7.32-4.462 4.579 0 8.284 3.704 8.284 8.254 0 4.579-3.705 8.284-8.255 8.284m0-15.605c-4.054 0-7.35 3.296-7.35 7.321 0 4.055 3.296 7.351 7.32 7.351 4.055 0 7.351-3.296 7.351-7.322 0-4.055-3.295-7.35-7.321-7.35" clip-path="url(#SVGID_2_)"/><rect id="rect248" clip-path="url(#SVGID_2_)" height="21.176" width=".933" y="4.371" x="19.68"/><path id="path250" d="m47.516 17.671c0 4.58-3.703 8.284-8.313 8.284-1.692 0-3.267-0.525-4.58-1.4-1.312 0.875-2.887 1.4-4.579 1.4-4.58 0-8.284-3.704-8.284-8.254 0-4.58 3.704-8.284 8.284-8.284 1.692 0 3.268 0.525 4.609 1.4 1.312-0.875 2.887-1.4 4.55-1.4 4.58 0 8.284 3.704 8.284 8.254h0.029m-0.904 0.03c0-4.055-3.296-7.351-7.352-7.351-1.399 0-2.713 0.379-3.792 1.079 1.75 1.517 2.859 3.763 2.859 6.242 0 2.509-1.109 4.755-2.888 6.301 1.107 0.671 2.421 1.05 3.792 1.05 4.055 0 7.35-3.296 7.35-7.321h0.031zm-11.93-5.717c-1.663 1.341-2.741 3.412-2.741 5.717 0 2.304 1.078 4.375 2.741 5.746 1.662-1.342 2.742-3.413 2.742-5.717 0-2.305-1.08-4.375-2.742-5.746m-0.817 12.017c-1.75-1.517-2.859-3.763-2.829-6.242 0-2.508 1.107-4.755 2.857-6.3-1.107-0.671-2.421-1.051-3.791-1.051-4.055 0-7.351 3.297-7.351 7.322 0 4.054 3.296 7.35 7.321 7.35 1.399 0 2.713-0.379 3.82-1.079h-0.027z" clip-path="url(#SVGID_2_)"/><path id="path252" d="m70.183 25.547v-10.296c0-2.713-2.188-4.901-4.929-4.901-2.713 0-4.9 2.188-4.9 4.901v10.296h-0.934v-10.296c0-2.713-2.188-4.901-4.93-4.901-2.713 0-4.9 2.188-4.9 4.901v10.296h-0.934v-10.267c0-3.238 2.625-5.863 5.834-5.863 2.421 0 4.492 1.458 5.396 3.558 0.904-2.1 2.975-3.558 5.367-3.558 3.236 0 5.862 2.625 5.862 5.834v10.296h-0.932" clip-path="url(#SVGID_2_)"/><path id="path254" d="m72.687 9.826h0.933v15.722h-0.933v-15.722zm0-5.455h0.933v3.354h-0.933v-3.354z" clip-path="url(#SVGID_2_)"/><path id="path256" d="m87.022 25.547v-9.713c0-3.034-2.449-5.484-5.453-5.484-3.034 0-5.484 2.45-5.484 5.455v9.742h-0.934v-9.742c0-3.53 2.858-6.388 6.418-6.388 3.528 0 6.387 2.858 6.387 6.388v9.742h-0.934" clip-path="url(#SVGID_2_)"/><path id="path258" d="m97.351 31.41c-3.471 0-6.445-2.158-7.671-5.192h1.021c1.167 2.509 3.705 4.259 6.649 4.259 4.056 0 7.352-3.296 7.352-7.322v-1.662c-1.371 2.654-4.143 4.463-7.321 4.463-4.58 0-8.284-3.705-8.284-8.255 0-4.58 3.704-8.284 8.254-8.284 4.58 0 8.284 3.704 8.284 8.255v5.454c0.01 4.58-3.7 8.284-8.279 8.284m7.349-13.709c0-4.054-3.296-7.35-7.321-7.35-4.055 0-7.351 3.296-7.351 7.321 0 4.054 3.296 7.35 7.32 7.35 4.056 0 7.352-3.296 7.352-7.35v0.029z" clip-path="url(#SVGID_2_)"/><path id="path260" d="m115.06 25.956c-4.579 0-8.284-3.704-8.284-8.255 0-4.579 3.705-8.283 8.284-8.283 3.179 0 5.951 1.808 7.322 4.462v-9.509h0.933v13.301c0 4.579-3.7 8.284-8.25 8.284m0-15.605c-4.054 0-7.352 3.296-7.352 7.321 0 4.055 3.298 7.351 7.322 7.351 4.055 0 7.352-3.296 7.352-7.322 0-4.055-3.3-7.35-7.32-7.35" clip-path="url(#SVGID_2_)"/><path id="path262" d="m140.06 25.547v-4.054c-1.371 2.654-4.142 4.463-7.321 4.463-4.579 0-8.283-3.705-8.283-8.255 0-4.58 3.704-8.284 8.255-8.284 4.579 0 8.283 3.704 8.283 8.255v7.875h-0.94m0-7.846c0-4.054-3.296-7.35-7.321-7.35-4.055 0-7.351 3.296-7.351 7.321 0 4.054 3.296 7.35 7.322 7.35 4.054 0 7.35-3.296 7.35-7.35v0.029z" clip-path="url(#SVGID_2_)"/><rect id="rect264" clip-path="url(#SVGID_2_)" height="21.176" width=".933" y="4.371" x="142.52"/><path id="path266" d="m161.14 18.152h-15.575c0.232 3.822 3.413 6.87 7.32 6.87 2.946 0 5.484-1.75 6.651-4.259h1.021c-1.225 3.033-4.2 5.192-7.672 5.192-4.579 0-8.282-3.704-8.282-8.255 0-4.579 3.703-8.283 8.254-8.283 4.579 0 8.283 3.704 8.283 8.254v0.481m-8.25-7.801c-3.907 0-7.088 3.019-7.32 6.869h14.612c-0.23-3.822-3.41-6.869-7.29-6.869" clip-path="url(#SVGID_2_)"/><path id="path268" d="m168.38 25.956c-2.596 0-4.697-2.1-4.697-4.696h0.935c0 2.071 1.691 3.763 3.732 3.763 2.072 0 3.764-1.692 3.793-3.734 0-2.275-1.809-3.325-3.763-3.792-2.101-0.525-4.055-1.604-4.026-4.054 0-2.217 1.81-4.026 4.026-4.026s4.025 1.823 4.025 4.04h-0.934c0-1.721-1.4-3.106-3.092-3.106-1.721 0-3.121 1.4-3.121 3.121 0 2.071 1.721 2.683 3.412 3.179 2.334 0.642 4.376 1.925 4.376 4.609-0.01 2.595-2.11 4.696-4.67 4.696" clip-path="url(#SVGID_2_)"/></g></svg>
+          <svg fill="#D6DBE4" viewBox="0 0 106 30" width="100px" height="32px" style="padding-bottom:4px;" aria-label="Christian Dior Couture"><path d="M8.97806 27.4239C8.97806 28.0373 9.25693 28.2261 9.67223 28.2261H13.3467C22.396 28.2261 25.6702 21.3611 25.6702 14.4831C25.6702 7.60515 22.1873 0.932951 14.5475 0.932951H9.54784C9.04025 0.932951 8.99411 1.36438 8.99411 1.55325L8.97806 27.4239ZM0.333041 0.394165H14.1753C26.0936 0.394165 30.7361 7.33079 30.7361 14.6611C30.7361 21.9913 24.7544 28.7659 13.3949 28.7659H0.343072C0.111348 28.7659 0.0100314 28.6178 0.0100314 28.4856C0.0100314 28.3365 0.151473 28.2122 0.383198 28.2122H2.82583C3.57417 28.2122 4.08075 27.7699 4.08075 26.9269V2.25705C4.08075 1.64769 3.77279 0.963767 2.77567 0.963767H0.294922C0.113354 0.963767 0 0.829568 0 0.690398C0 0.551228 0.0471474 0.395159 0.333041 0.395159"></path><path d="M31.9407 0.394165C31.7152 0.394165 31.5241 0.468733 31.5241 0.661617C31.5241 0.832627 31.6283 0.932051 31.8365 0.932051H34.2851C34.8522 0.932051 35.4001 1.31285 35.4001 2.38265V26.9514C35.4001 27.4555 35.0069 28.231 34.3124 28.231H31.8709C31.5959 28.231 31.5615 28.4478 31.5615 28.5352C31.5615 28.6227 31.5454 28.7659 31.8638 28.7659H43.7132C43.8871 28.7659 44.1338 28.7411 44.1338 28.569C44.1338 28.397 44.0893 28.23 43.7779 28.23H41.4922C41.1626 28.23 40.2689 28.0272 40.2689 27.0528V2.11122C40.2689 1.40233 40.7147 0.933045 41.5468 0.933045H43.782C43.9822 0.933045 44.0792 0.832627 44.0792 0.669571C44.0792 0.528388 43.966 0.395159 43.7193 0.395159H31.9407V0.394165Z"></path><path d="M60.2899 29.5539C69.7115 29.5539 75.658 22.9376 75.658 14.777C75.658 6.61634 69.7665 0 60.2899 0C50.8134 0 44.9219 6.61634 44.9219 14.777C44.9219 22.9376 51.0585 29.5539 60.2899 29.5539ZM50.136 14.777C50.136 6.93831 53.666 0.583327 60.2899 0.583327C66.9138 0.583327 70.4449 6.93831 70.4449 14.777C70.4449 22.6156 67.1049 28.9706 60.2899 28.9706C53.4749 28.9706 50.136 22.6156 50.136 14.777Z"></path><path d="M86.5271 0.936091H88.2953C91.3242 0.936091 96.2567 2.13214 96.2567 7.90601C96.2567 13.1971 91.8825 14.9911 87.8495 14.9911H85.2683V2.12412C85.2683 1.4099 85.7071 0.937093 86.5271 0.937093M105.573 28.8027C101.896 29.1944 99.8708 23.113 98.0021 20.2281C96.6199 18.0944 93.6646 15.9127 90.7381 15.497C95.5254 15.2215 100.913 13.6699 100.913 8.1965C100.913 3.75291 98.2041 0.394165 88.2336 0.394165H76.7396C76.5904 0.394165 76.4461 0.470295 76.4461 0.663626C76.4461 0.83592 76.5864 0.937093 76.7396 0.937093H79.3805C79.9378 0.937093 80.4781 1.32075 80.4781 2.39859V27.1519C80.4781 27.6588 80.091 28.4411 79.4074 28.4411H76.7884C76.5775 28.4411 76.4839 28.6204 76.4839 28.7106C76.4839 28.8007 76.5595 28.981 76.7805 28.981H88.9769C89.147 28.981 89.2893 28.8909 89.2893 28.7186C89.2893 28.5463 89.1799 28.4411 88.9391 28.4411H86.4723C86.1479 28.4411 85.2683 28.2358 85.2683 27.2541V15.5551H86.528C92.5591 15.5551 93.0019 22.1393 96.005 25.9118C98.5772 29.1443 101.929 29.554 103.827 29.554C104.637 29.554 105.205 29.527 105.706 29.4008C106.085 29.3046 106.155 28.7406 105.572 28.8037"></path></svg>
+          <svg id="BG_full-colour" fill="#D6DBE4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="132" height="32" viewBox="0 0 140.2 39.474" style="padding-bottom:4px;">
+            <path id="Path_513" data-name="Path 513" d="M545.278.014a4.123,4.123,0,0,1,3.787,4.109v1.2h0V14.4a6.293,6.293,0,0,0,1.846,4.455l3.483,3.49V8.993A8.991,8.991,0,0,0,545.4,0H545Z" transform="translate(-414.194)"/>
+            <path id="Path_514" data-name="Path 514" d="M498.949,5.328h9.077v-1.2A4.123,4.123,0,0,0,503.9,0H491l3.485,3.485A6.3,6.3,0,0,0,498.949,5.328Z" transform="translate(-373.155 0)" fill="#D6DBE4"/>
+            <path id="Path_515" data-name="Path 515" d="M22.631,41.428a8.662,8.662,0,0,1,.559,10.018,9.058,9.058,0,0,1-3.855,3.25,13.382,13.382,0,0,1-5.863,1.188H0V22.17H12.843a13.775,13.775,0,0,1,5.911,1.164,8.7,8.7,0,0,1,3.732,3.12,7.959,7.959,0,0,1,1.26,4.39,7.528,7.528,0,0,1-1.55,4.851,9.034,9.034,0,0,1-4.169,2.873A7.429,7.429,0,0,1,22.631,41.428ZM5.52,36.335h6.838A6.561,6.561,0,0,0,16.6,35.1a4.315,4.315,0,0,0,1.526-3.564A4.416,4.416,0,0,0,16.6,27.966a6.332,6.332,0,0,0-4.241-1.277H5.52ZM17.394,50.016a4.7,4.7,0,0,0,1.6-3.783A4.908,4.908,0,0,0,17.3,42.3a6.677,6.677,0,0,0-4.5-1.454H5.52V51.375h7.467A6.609,6.609,0,0,0,17.4,50.014Z" transform="translate(0 -16.849)"/>
+            <path id="Path_516" data-name="Path 516" d="M134.878,65.315h-20.4a7.407,7.407,0,0,0,2.376,5.141,7.5,7.5,0,0,0,5.232,1.942,6.463,6.463,0,0,0,6.3-3.737h5.962A12.056,12.056,0,0,1,129.96,74.7a12.879,12.879,0,0,1-7.875,2.352,13.611,13.611,0,0,1-6.857-1.723,12.241,12.241,0,0,1-4.75-4.851,14.754,14.754,0,0,1-1.718-7.251,15.113,15.113,0,0,1,1.68-7.253,11.761,11.761,0,0,1,4.69-4.827,14.032,14.032,0,0,1,6.96-1.7,13.594,13.594,0,0,1,6.737,1.649,11.645,11.645,0,0,1,4.6,4.632A14.034,14.034,0,0,1,135.08,62.6,17.551,17.551,0,0,1,134.878,65.315ZM129.3,60.863a6.3,6.3,0,0,0-2.182-4.9,7.8,7.8,0,0,0-5.28-1.843,7.092,7.092,0,0,0-4.894,1.819,7.551,7.551,0,0,0-2.427,4.923Z" transform="translate(-82.656 -37.582)"/>
+            <path id="Path_517" data-name="Path 517" d="M251.378,65.315h-20.4a7.407,7.407,0,0,0,2.376,5.141,7.5,7.5,0,0,0,5.232,1.942,6.46,6.46,0,0,0,6.3-3.737h5.962a12.065,12.065,0,0,1-4.385,6.041,12.889,12.889,0,0,1-7.877,2.352,13.611,13.611,0,0,1-6.857-1.723,12.241,12.241,0,0,1-4.747-4.851,14.772,14.772,0,0,1-1.721-7.251,15.076,15.076,0,0,1,1.68-7.253,11.787,11.787,0,0,1,4.69-4.827,14.023,14.023,0,0,1,6.96-1.7,13.594,13.594,0,0,1,6.737,1.649,11.645,11.645,0,0,1,4.591,4.632,13.964,13.964,0,0,1,1.649,6.864A17.258,17.258,0,0,1,251.378,65.315ZM245.8,60.863a6.3,6.3,0,0,0-2.182-4.9,7.8,7.8,0,0,0-5.28-1.843,7.1,7.1,0,0,0-4.9,1.819,7.561,7.561,0,0,0-2.422,4.923Z" transform="translate(-171.195 -37.582)"/>
+            <path id="Path_518" data-name="Path 518" d="M364.008,77.635,352.039,65.673V77.635H346.66V50.79h5.379V62.827L363.946,50.79h6.492L357.225,64.1l13.582,13.539Z" transform="translate(-263.458 -38.6)"/>
+            <path id="Path_519" data-name="Path 519" d="M448.52,75.913a9.925,9.925,0,0,1-3.948-3.106A7.716,7.716,0,0,1,443,68.418h5.717a3.91,3.91,0,0,0,1.625,2.839,5.9,5.9,0,0,0,3.706,1.14,6.248,6.248,0,0,0,3.612-.9,2.7,2.7,0,0,0,1.284-2.3,2.365,2.365,0,0,0-1.44-2.232,27.3,27.3,0,0,0-4.531-1.6,43.381,43.381,0,0,1-4.894-1.6,8.569,8.569,0,0,1-3.271-2.376,6.238,6.238,0,0,1-1.382-4.222,6.591,6.591,0,0,1,1.26-3.9,8.4,8.4,0,0,1,3.6-2.789,13.464,13.464,0,0,1,5.4-1.018,11.139,11.139,0,0,1,7.342,2.3,8.3,8.3,0,0,1,2.981,6.281h-5.52a3.939,3.939,0,0,0-1.454-2.861,5.423,5.423,0,0,0-3.538-1.068,5.74,5.74,0,0,0-3.343.823,2.561,2.561,0,0,0-1.164,2.184,2.364,2.364,0,0,0,.775,1.8,5.521,5.521,0,0,0,1.891,1.14q1.111.41,3.3,1.042a36.135,36.135,0,0,1,4.774,1.577,8.909,8.909,0,0,1,3.221,2.352,6.25,6.25,0,0,1,1.406,4.126,6.912,6.912,0,0,1-1.26,4.08,8.333,8.333,0,0,1-3.533,2.806,13.306,13.306,0,0,1-5.4,1.02,13.465,13.465,0,0,1-5.638-1.14Z" transform="translate(-336.675 -37.581)"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="32px" viewBox="0 0 88.928 32"><path d="M25.889,21.284" transform="translate(1.726 1.419)" fill="#D6DBE4"/><g transform="translate(36.458 7.2)"><path d="M60.479,14.031c-1.373-.254-2.949-.305-3.762-1.219a1.512,1.512,0,0,1-.154-1.525,3.191,3.191,0,0,1,3.254-1.374,2.9,2.9,0,0,1,2.694,1.627,3.846,3.846,0,0,1,.305,1.323H66.58A5.7,5.7,0,0,0,65.1,8.9a8.7,8.7,0,0,0-7.318-1.983c-1.831.254-4.271,1.321-5.086,3.712a4.79,4.79,0,0,0,1.373,5.337c1.729,1.323,4.982,1.679,6.305,1.985,1.524.3,2.288.508,2.541,1.371A1.948,1.948,0,0,1,62.666,21c-.967,1.27-2.949,1.373-4.526.915-1.322-.405-1.882-1.475-2.135-2.9H52.041a5.823,5.823,0,0,0,1.067,3.306,6.458,6.458,0,0,0,4.626,2.847,10.642,10.642,0,0,0,6.406-.714,7.447,7.447,0,0,0,2.084-1.881,5.555,5.555,0,0,0,.253-5.794C65.359,14.845,62.818,14.438,60.479,14.031Z" transform="translate(-32.989 -6.747)" fill="#fff"/><path d="M48.552,9.306a8.151,8.151,0,0,0-7.319-2.442,7.953,7.953,0,0,0-5.643,3.865,11.443,11.443,0,0,0-1.323,3.763c-.407,3.1.458,8.286,5.9,10.32a8.849,8.849,0,0,0,8.185-1.169,8.051,8.051,0,0,0,2.847-4.73H46.672a3.587,3.587,0,0,1-1.322,2.034,4.181,4.181,0,0,1-4.83-.2c-1.373-1.017-1.829-2.693-1.881-5.084,0-1.27.356-3.3,1.423-4.27a4.2,4.2,0,0,1,3.967-.814,3.71,3.71,0,0,1,2.491,3.558H40.113v3.2H51.2a12.111,12.111,0,0,0-.305-3.356A11.886,11.886,0,0,0,48.552,9.306Z" transform="translate(-34.18 -6.749)" fill="#fff"/><path d="M83.837,20.426V14.935a22.451,22.451,0,0,0-.355-4.169c-.305-1.322-1.475-3.508-5.237-3.966-.7-.05-1.45-.05-2.2-.05h-.034a11.965,11.965,0,0,0-3.626.659A5.612,5.612,0,0,0,69.027,12.8h4.066a2.642,2.642,0,0,1,1.577-2.541A3.651,3.651,0,0,1,76.042,10v0a3.714,3.714,0,0,1,2.71.867,1.778,1.778,0,0,1,.46,1.728c-.255,1.068-1.424,1.423-3.2,1.678v.005c-.6.1-1.3.149-2.047.249-2.135.254-5.186,1.322-5.9,4.423a5.1,5.1,0,0,0,1.829,4.93,7.328,7.328,0,0,0,4.423,1.374,9.161,9.161,0,0,0,1.73-.153v-.009a8.437,8.437,0,0,0,3.572-1.822,5.624,5.624,0,0,0,.508,1.475H84.4A10.243,10.243,0,0,1,83.837,20.426Zm-4.576-.66a3.639,3.639,0,0,1-3.253,2.083v.006a3.222,3.222,0,0,1-.98.044,2.409,2.409,0,0,1-2.237-1.27,2.058,2.058,0,0,1,.1-1.983c.61-1.067,1.678-1.27,3.153-1.575v-.005a10.229,10.229,0,0,0,1.488-.3,4.043,4.043,0,0,0,1.931-.864A20.277,20.277,0,0,1,79.261,19.765Z" transform="translate(-31.927 -6.75)" fill="#fff"/></g><path d="M21.837,26.2c-7.205-2.487-8.539-9.153-6.742-13.82A8.381,8.381,0,0,1,27.526,8.662c4.361,3.127,3.9,9.126,3.9,9.126H20.247v-3.2h6.486a3.055,3.055,0,0,0-.9-2.436,3.932,3.932,0,0,0-4.845-.794c-1.257.666-2.871,3.435-1.923,7.408.9,3.017,3.726,4.215,6.27,4.214h0c3.789,0,6.658-2.638,6.663-6.958a16,16,0,1,0-3.809,10.342A10.225,10.225,0,0,1,21.837,26.2ZM7.678,18.013A1.825,1.825,0,1,1,9.5,16.188,1.825,1.825,0,0,1,7.678,18.013Z" transform="translate(0 0)" fill="#fff"/></svg>
+        </div>
       </article>
-
-<!--
-        <div id="showcase">
-          <a href="https://easter.company">
-            <div>
-              <img src="https://easter.company/static/meta/preview-banner.png" alt="easter company"/>
-              <div>
-                <h3>Easter Company</h3>
-                <p>My personal company for handling B2B contracts, currently developing and maintain the Dexter A.I. platform.</p>
-              </div>
-            </div>
-          </a>
-          <a href="https://github.com/Aridhia-Open-Source/PHEMS_federated_node">
-            <div>
-              <img src="https://raw.githubusercontent.com/Aridhia-Open-Source/PHEMS_federated_node/main/images/phems_logo_RGB_color_cropped_left%20align.JPG" alt="PHEMS"/>
-              <div>
-                <h3>PHEMS Federated Node</h3>
-                <p>Spear headed research and development for the federated learning component of the network. Allowing for training & fine tuning of ML models.</p>
-              </div>
-            </div>
-          </a>
-          <a href="https://emperiavr.com">
-            <div>
-              <img src="https://emperiavr.com/wp-content/uploads/2024/03/Emperia-Team-e1710157380854.jpg" alt="PHEMS"/>
-              <div>
-                <h3>Emperia VR</h3>
-                <p>Lead software development for Bloomingdales, Pinko, Ralph Lauren, Chanel and other big contracts.</p>
-              </div>
-            </div>
-          </a>
-          <a href="https://bashful-sh.github.io">
-            <div>
-              <img src="https://bashful-sh.github.io/static/meta/preview-banner.png" alt="bashful-sh"/>
-              <div>
-                <h3>Bashful-sh</h3>
-                <p>An open source initiative started by myself to develop and maintain a bash terminal extension and profile manager called bashful.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <h2>My Skills</h2>
-        <div id="skills">
-        </div>
-
--->
-
-
-
     </main>
-    <!-- Entry Script -->
     <script>
-      function startSplashLoaderFadeTransition() {
-        const loadingScreen = document.getElementById('initial-loading-screen-container');
-        const content = document.getElementById('content');
-        const body = document.body;
-        if (!loadingScreen || !content) {
-          console.error("Error: Loading screen or content element not found.");
-          if(content) {
-            content.style.opacity = '1';
-            content.style.visibility = 'visible';
-          }
-          if(loadingScreen) {
-            loadingScreen.style.display = 'none';
-          }
-          if (body) {
-            body.classList.remove('loading');
-          }
+      function toggleApp(app) {
+        const background = document.getElementById('background');
+        const content = document.getElementById('main-content');
+        const appEl = document.getElementById(app + '-app');
+        if (appEl.style.opacity !== 1) {
+          background.style.opacity = 0;
+          content.style.opacity = 0;
+          appEl.style.opacity = 1;
+          background.style.pointerEvents = 'none';
+          content.style.pointerEvents = 'none';
+          appEl.style.pointerEvents = 'all';
+        } else {
+          background.style.opacity = 1;
+          content.style.opacity = 1;
+          appEl.style.opacity = 0;
+          background.style.pointerEvents = 'all';
+          content.style.pointerEvents = 'all';
+          appEl.style.pointerEvents = 'none';
         }
-        loadingScreen.classList.add('fade-out');
-        content.classList.add('fade-in');
-        loadingScreen.addEventListener('transitionend', (event) => {
-          if (event.target === loadingScreen && (event.propertyName === 'opacity' || event.propertyName === 'visibility')) {
-             if (loadingScreen.classList.contains('fade-out')) {
-                 loadingScreen.style.display = 'none';
-             }
-          }
-        }, { once: true });
-        body.classList.remove('loading');
       }
-      window.addEventListener('load', () => {setTimeout(startSplashLoaderFadeTransition, 1500)});
+      function loadPage() {
+        const loadingScreen = document.getElementById('ls-cont');
+        const content = document.getElementById('main-content');
+        if(content) { content.style.opacity = '1'; }
+        if(loadingScreen) { loadingScreen.style.opacity = '0'; loadingScreen.style.pointerEvents = 'none'; }
+      }
+      window.addEventListener('load', () => {setTimeout(loadPage, 1000)});function createMeeting() {
+      const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+      const eventTitle = "Owen/Client Introduction";
+      const eventDetails = "Initial client introduction consultation.";
+      const eventDates = ""; // User will pick the date and time
+      const inviteeEmail = "owen@easter.company";
+      let calendarUrl = `${baseUrl}&text=${encodeURIComponent(eventTitle)}`;
+      calendarUrl += `&details=${encodeURIComponent(eventDetails)}`;
+      calendarUrl += `&add=${encodeURIComponent(inviteeEmail)}`;
+      if (eventDates) {
+        calendarUrl += eventDates;
+      }
+      window.open(calendarUrl, '_blank');
+    }
+    function emailOwen() {
+      const email = "owen@easter.company";
+      const subject = "Enquiry from Website"; // Optional: pre-fill subject
+      const body = "Hello Owen,\n"; // Optional: pre-fill body
+      // Construct the mailto link
+      let mailtoLink = `mailto:${email}`;
+      if (subject) {
+        mailtoLink += `?subject=${encodeURIComponent(subject)}`;
+        if (body) {
+          mailtoLink += `&body=${encodeURIComponent(body)}`;
+        }
+      } else if (body) { // In case only body is provided, but not subject
+        mailtoLink += `?body=${encodeURIComponent(body)}`;
+      }
+
+      // Open the user's default email client
+      window.location.href = mailtoLink;
+    }
+    function callOwen() {
+      const phoneNumber = "+447506624694";
+      // Construct the tel link
+      const telLink = `tel:${phoneNumber}`;
+      // Attempt to initiate the call
+      // This will typically open the default calling app on a mobile device
+      // or might prompt the user on a desktop (e.g., to use Skype, FaceTime, etc.)
+      window.location.href = telLink;
+    }
     </script>
   </body>
 </html>

@@ -302,19 +302,13 @@
     </style>
   </head>
   <body>
-    <!-- Loading Screen -->
     <div id="ls-cont" class="glass">
       <img id="ls-icon" src="https://oceaster.github.io/static/assets/signature.svg" alt="signature"/>
       <p><i class='bx bx-loader spin1s'></i>&nbsp;&nbsp;Cracking Eggs...</p>
     </div>
-    <!-- Persistant Nav Bar -->
     <nav class="glass">
     </nav>
-    <!-- Default Content -->
     <main>
-      <!-- sh-app -->
-      <div id="sh-app">
-      </div>
       <div id="background" class="background">
       </div>
       <article id="main-content">
@@ -675,26 +669,6 @@
       </article>
     </main>
     <script>
-      function toggleApp(app) {
-        const background = document.getElementById('background');
-        const content = document.getElementById('main-content');
-        const appEl = document.getElementById(app + '-app');
-        if (appEl.style.opacity !== 1) {
-          background.style.opacity = 0;
-          content.style.opacity = 0;
-          appEl.style.opacity = 1;
-          background.style.pointerEvents = 'none';
-          content.style.pointerEvents = 'none';
-          appEl.style.pointerEvents = 'all';
-        } else {
-          background.style.opacity = 1;
-          content.style.opacity = 1;
-          appEl.style.opacity = 0;
-          background.style.pointerEvents = 'all';
-          content.style.pointerEvents = 'all';
-          appEl.style.pointerEvents = 'none';
-        }
-      }
       function loadPage() {
         const loadingScreen = document.getElementById('ls-cont');
         const content = document.getElementById('main-content');

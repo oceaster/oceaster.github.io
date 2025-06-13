@@ -62,9 +62,10 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #9d9d9d9d;
       }
-      a {color:#dadada;font-weight:200;text-decoration:none;}
-      a:hover{text-decoration:underline;}
-      h1, h2 {text-align: left; margin: 5% 0 2.5% 0;}
+      * { box-sizing: border-box; }
+      a { color:#dadada; font-weight:200; text-decoration: none; }
+      a:hover{ text-decoration:underline; }
+      h1, h2 { text-align: left; margin: 5% 0 2.5% 0; }
       body {
         overflow-x: hidden;
         margin: 0;
@@ -84,14 +85,16 @@
       nav {
         z-index: 99;
         display: flex;
-        position: relative;
+        position: fixed;
         flex-direction: row;
+        top: 16px;
+        left: 50%;
+        transform: translate(-50%,0%);
         width: 100%;
         max-width: 1188px;
         min-height: 64px;
         height: 64px;
         max-height: 64px;
-        margin: 16px auto 0 auto;
       }
       article {
         min-width: 300px;
@@ -103,19 +106,18 @@
       }
       article>header {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: flex-start;
-
-        width: 96%;
+        width: 100%;
         max-width: 1180px;
-
-        margin: 96px auto 16px auto;
-        padding: 84px 2%;
+        margin: 164px auto 16px auto;
+        padding: 86px 2% 32px 2%;
       }
       article>header>*>img {
         user-select: none;
         width: 186px;
         height: auto;
+        margin: 0 auto;
         border-radius: 50%;
       }
       article>header>div {
@@ -123,7 +125,7 @@
         flex-direction: column;
         flex-wrap: wrap;
         height: 100%;
-        padding: 2.5%;
+        width: 100%;
       }
       #ls-cont {
         position: fixed;
@@ -172,11 +174,9 @@
         flex-direction: row;
         justify-content: space-evenly;
         overflow: hidden;
-        max-width: 112px;
         flex-wrap: wrap;
-        margin: 168px auto 0 auto;
-        padding: 0 0 43px 0;
-        border-radius: 3px;
+        margin: 32px auto;
+        padding: 0 0 0 0;
       }
       #phb>a {
         text-decoration: none;
@@ -235,9 +235,9 @@
         padding: 0 2%;
         border-radius: 0;
       }
-      .box1>h3 {padding:28px;border-right:1px solid #dadadada;width:25%;}
+      .box1>h3 { padding: 28px;border-right: 1px solid #dadadada; width: 25%; }
       #sh-app { z-index: 99 display: flex; flex-direction: column; position: fixed; pointer-events: all; top: 0; left: 0; width: 100vw; height: 100vh; }
-      .spin1s {animation: spin 1s linear infinite;}
+      .spin1s { animation: spin 1s linear infinite; }
       @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
@@ -264,13 +264,28 @@
       .schedule-button:hover {
         background-color: #9a9a9a25;
       }
+      #nav-links{
+        display: flex;
+        flex-direction: row;
+        margin: 0 0 0 auto;
+        padding: 0 32px;
+      }
+      #nav-links>a{
+        display: flex;
+        height: 100%;
+        padding: 0 8px;
+        margin: 0 16px;
+      }
+      #nav-links>a>p{
+        margin: auto auto;
+      }
       @media only screen and (max-width: 1380px) {
         article>header {
           margin: 64px auto 0 auto;
         }
         nav {
           top: 0;
-          left: 0;
+          left: 50%;
           min-width: 100vw;
           width: 100vw;
           max-width: 100vw;
@@ -281,15 +296,6 @@
         }
         .box1>h3 {padding:28px;border-right:unset;border-bottom:1px solid #dadadada;width:100%;}
         .tsi {min-width:25%;}
-        article>header {
-          flex-direction: column;
-        }
-        article>header>div {
-          width: 100%;
-        }
-        article>header>div>img {
-          margin: 0 auto;
-        }
         #phb {
           width: 100%;
           max-width: unset;
@@ -297,6 +303,16 @@
         }
         #phi,#contact2,#phb {
           display: none;
+        }
+      }
+      @media only screen and (max-width: 660px) {
+        #nav-links {
+          display: none;
+        }
+        #site-header {
+          width: 100%;
+          margin: auto auto;
+          padding: 16px;
         }
       }
     </style>
@@ -307,13 +323,21 @@
       <p><i class='bx bx-loader spin1s'></i>&nbsp;&nbsp;Cracking Eggs...</p>
     </div>
     <nav class="glass">
+      <div id="site-header" style="display:flex;flex-direction:row;padding:0 16px;width:100%;max-width:420px;">
+        <img src="https://oceaster.github.io/static/assets/profile.jpg" alt="profile" style="border:1px solid white;border-radius:50%;width:32px;height:32px;margin:auto auto;"/>
+        <h1 style="margin:auto auto auto 0;padding:0 16px;font-weight:400;font-size:16px;">Owen Easter, A.I. &amp; Software Specialist</h1>
+      </div>
+      <div id="nav-links">
+        <a href="#about"><p>About Me</p></a>
+        <a href="#clients"><p>Clients</p></a>
+      </div>
     </nav>
     <main>
       <div id="background" class="background">
       </div>
       <article id="main-content">
-        <header class="glass">
-          <div>
+        <header id="about" class="glass">
+          <div style="margin:0;padding:2%;">
             <img src="https://oceaster.github.io/static/assets/profile.jpg" alt="profile" style="border:3px solid white;border-radius:50%;"/>
             <div id="ath" style="margin:32px auto 32px auto;">Available to Hire</div>
             <div id="contact" class="cc" style="margin:0 0 auto 0;padding: 0;">
@@ -329,22 +353,12 @@
               <div onclick="window.location = 'https://instagram.com/eastercompany'"><i class='bx bxl-instagram-alt'></i></div>
               <div onclick="window.location = 'https://www.youtube.com/@eastercompany'"><i class='bx bxl-youtube'></i></div>
             </div>
-            <!--
-            <div id="contact2" style="display:flex;flex-direction:column;width:100%;justify-content:center;align-items:center;text-align:center;">
-              <a href="mailto:owen@easter.company">
-                Contact via Email
-              </a>
-              <a href="tel:+447506624694">
-                Contact via Phone
-              </a>
-            </div>
-            -->
           </div>
-          <div style="text-align:left;width:100%;">
-            <h1 style="margin:0 0 0 0;width:100%;">Hi there! I'm Owen Easter, 👋</h1>
+          <div style="text-align:left;marign:0;padding:0;">
+            <h1 style="margin:0 0 0 0;">Hi there! I'm Owen Easter, 👋</h1>
             <p>Senior Software Engineer specializing in AI, Infrastructure &amp; Web Applications. Based in the Highlands of Scotland, designing, developing, and deploying products of all shapes and sizes in industries such as Retail, Finance, Artificial Intelligence &amp; Biomedial Applications.</p>
-            <p>Contributing to major efforts such as early warning sepsis diagnosis, potential cures for alzeihmers, or cutting edge foundational AI research that eventually lead to the state of LLMs today. There is never a dull moment in this career story.</p>
-            <h2 style="margin:16px 0 8px 0;width:100%;">Career Highlights</h2>
+            <p>Contributing to major efforts such as early warning sepsis diagnosis, potential cures for alzeihmers, or cutting edge foundational AI research that eventually lead to the state of LLMs today.</p>
+            <h2 style="margin:16px 0 8px 0;">Career Highlights</h2>
             <p>
               <i class='bx bxs-star'></i>
               Over 10 years commercial experience in software development
@@ -374,27 +388,167 @@
               <a href="https://www.aridhia.com/">@Aridhia</a>
               <br/><br/>
             </p>
-            <!--
-            <div id="pricing-cont" style="display:flex;flex-direction:row;justify-content:space-evenly;align-items:center;text-align:center;width:100%;margin: 32px auto;">
-              <div class="pricing-el">
-                <h2 style="text-align:left;">£180/hour</h2>
-                <h3 style="text-align:left;">contract</h3>
-                <h4 style="text-align:left;">minimum</h4>
+            <div id="traits" class="box1" style="border-top-right-radius:6px;border-top-left-radius:6px;">
+              <h3>Traits</h3>
+              <div class="tsi">
+                <i class='bx bx-dumbbell' ></i>
+                <h5>Hard Working</h5>
+                <h6></h6>
               </div>
-              <hr style="height:100%;"/>
-              <div class="pricing-el">
-                <h2 style="text-align:center;">£4,320/week</h2>
-                <h3 style="text-align:center;">contract</h3>
-                <h4 style="text-align:center;">minimum</h4>
+              <div class="tsi">
+                <i class='bx bxs-hand-right' ></i>
+                <h5>Direct</h5>
+                <h6></h6>
               </div>
-              <hr style="height:100%;"/>
-              <div class="pricing-el">
-                <h2 style="text-align:right;">£96,000/year</h2>
-                <h3 style="text-align:right;">full time</h3>
-                <h4 style="text-align:right;">minimum</h4>
+              <div class="tsi">
+                <i class='bx bxs-briefcase' ></i>
+                <h5>Organised</h5>
+                <h6></h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxs-dog' ></i>
+                <h5>Loyal</h5>
+                <h6></h6>
               </div>
             </div>
-            -->
+            <div class="box1">
+              <h3>Methodologies</h3>
+              <div class="tsi">
+                <i class='bx bxs-grid' ></i>
+                <h5>Micro Services</h5>
+                <h6>within moderation</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bx-align-justify' ></i>
+                <h5>Clean Code</h5>
+                <h6>high standards</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bx-color'></i>
+                <h5>CI/CD</h5>
+                <h6>rapid iteration</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bx-check-double' ></i>
+                <h5>Five Nines</h5>
+                <h6>99.999% uptime</h6>
+              </div>
+            </div>
+            <div class="box1">
+              <h3>Languages</h3>
+              <div class="tsi">
+                <i class='bx bxl-python'></i>
+                <h5>Python</h5>
+                <h6>10 years experience</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-javascript'></i>
+                <h5>JavaScript</h5>
+                <h6>10 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" style="fill:#fff;transform: ;msFilter:;"><path d="M19.24 3H4.76A1.76 1.76 0 0 0 3 4.76v14.48A1.76 1.76 0 0 0 4.76 21h14.48A1.76 1.76 0 0 0 21 19.24V4.76A1.76 1.76 0 0 0 19.24 3zm-5.8 10h-2.25v6.44H9.4V13H7.15v-1.46h6.29zm5.8 5.28a1.71 1.71 0 0 1-.67.74 3 3 0 0 1-1 .39 5.81 5.81 0 0 1-1.2.12 7 7 0 0 1-1.23-.11 4.52 4.52 0 0 1-1-.33v-1.71l-.06-.06h.06v.07a3.41 3.41 0 0 0 1 .54 3.06 3.06 0 0 0 1.13.2 2.58 2.58 0 0 0 .6-.06 1.47 1.47 0 0 0 .42-.17.75.75 0 0 0 .25-.25.69.69 0 0 0-.06-.74 1.24 1.24 0 0 0-.35-.33 3.12 3.12 0 0 0-.53-.3l-.67-.28a3.57 3.57 0 0 1-1.37-1 2 2 0 0 1-.46-1.33 2.16 2.16 0 0 1 .24-1.06 2.09 2.09 0 0 1 .66-.71 2.88 2.88 0 0 1 1-.42 5.11 5.11 0 0 1 1.19-.13 7 7 0 0 1 1.09.07 4.53 4.53 0 0 1 .88.23v1.65a2.42 2.42 0 0 0-.42-.24 3.58 3.58 0 0 0-.49-.17 3 3 0 0 0-.49-.1 2.45 2.45 0 0 0-.46 0 2.29 2.29 0 0 0-.56.06 1.54 1.54 0 0 0-.43.16.78.78 0 0 0-.26.25.63.63 0 0 0-.09.33.62.62 0 0 0 .1.35 1.19 1.19 0 0 0 .3.29 2.15 2.15 0 0 0 .46.28l.63.28a6.56 6.56 0 0 1 .84.42 2.65 2.65 0 0 1 .64.49 1.79 1.79 0 0 1 .42.63 2.48 2.48 0 0 1 .14.85 2.68 2.68 0 0 1-.25 1.08z"></path></svg>
+                <h5>TypeScript</h5>
+                <h6>5 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-go-lang'></i>
+                <h5>Go</h5>
+                <h6>3 years exp.</h6>
+              </div>
+            </div>
+            <div class="box1">
+              <h3>Infrastructure</h3>
+              <div class="tsi">
+                <i class='bx bxl-docker'></i>
+                <h5>Docker</h5>
+                <h6>5 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-kubernetes'></i>
+                <h5>Kubernetes</h5>
+                <h6>3 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-aws'></i>
+                <h5>AWS</h5>
+                <h6>5 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bx-cloud'></i>
+                <h5>Redis Cloud</h5>
+                <h6>3 years exp.</h6>
+              </div>
+            </div>
+            <div class="box1">
+              <h3>Web Libraries</h3>
+              <div class="tsi">
+                <i class='bx bxl-flask'></i>
+                <h5>Flask</h5>
+                <h6>10 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-react'></i>
+                <h5>React Native</h5>
+                <h6>5 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bx-server' ></i>
+                <h5>Fiber</h5>
+                <h6>3 years exp.</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxs-server' ></i>
+                <h5>Nginx</h5>
+                <h6>with systemd</h6>
+              </div>
+            </div>
+            <div class="box1">
+              <h3>AI/ML Operations</h3>
+              <div class="tsi">
+                <i class='bx bxs-torch' ></i>
+                <h5>PyTorch</h5>
+                <h6>for Training</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxs-chip' ></i>
+                <h5>Cuda</h5>
+                <h6>for Nvidia</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-c-plus-plus' ></i>
+                <h5>Llama.cpp</h5>
+                <h6>for Python</h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxs-face' ></i>
+                <h5>Hugging Face</h5>
+                <h6>for Open Source</h6>
+              </div>
+            </div>
+            <div class="box1" style="border-bottom-right-radius:6px;border-bottom-left-radius:6px;margin:0 auto 96px auto;">
+              <h3>Supported Platforms</h3>
+              <div class="tsi">
+                <i class='bx bxl-tux'></i>
+                <h5>Linux</h5>
+                <h6></h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-microsoft'></i>
+                <h5>Windows</h5>
+                <h6></h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-apple' ></i>
+                <h5>Apple+</h5>
+                <h6></h6>
+              </div>
+              <div class="tsi">
+                <i class='bx bxl-android' ></i>
+                <h5>Android</h5>
+                <h6></h6>
+              </div>
+            </div>
             <div style="display:flex;flex-direction:column;width:100%;margin:auto auto 0 auto;justify-content:space-evenly;align-items:center;text-align:center;">
               <button class="schedule-button" onclick="createMeeting()"><i class='bx bxs-calendar'></i>&nbsp;&nbsp;Schedule Meeting</button>
               <button class="schedule-button" onclick="emailOwen()"><i class='bx bxs-envelope'></i>&nbsp;&nbsp;Email</button>
@@ -402,8 +556,7 @@
             </div>
           </div>
         </header>
-        <div style="padding: 128px 0;display:flex;justify-content:space-evenly;align-items:center;text-align:center;flex-wrap:wrap;flex-direction:row;width:100%;">
-
+        <div id="clients" style="padding: 128px 0;display:flex;justify-content:space-evenly;align-items:center;text-align:center;flex-wrap:wrap;flex-direction:row;width:100%;">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 133 16"  class="d-inline-block align-top me-xl-1" alt="EMPERIA" style="margin-top:32px;">
             <path fill="#D6DBE4" d="M0.8125 15.5H16.3324V13.1755H3.29138V8.82726H16.2943V6.50328H0.8125V15.5Z" fill="#D6DBE4"></path><path d="M0.8125 2.8103V0.5H16.3324V2.8103H0.8125Z" fill="#D6DBE4"></path><path d="M37.1147 0.5L30.6616 9.60665L24.1006 0.5H20.5979V15.5H23.0767V3.12534L29.1123 11.4799H32.2243L38.2868 2.8382V15.5H40.7657V0.5H37.1147Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M45.284 0.5H55.4286C60.0226 0.513674 61.8952 2.0041 61.8952 5.68232C61.8952 9.40155 60.0091 10.8783 55.3881 10.8783H47.7629V15.5H45.284V0.5ZM47.7629 8.55378H55.954C58.5002 8.55378 59.4163 7.73336 59.4163 5.68232C59.4163 3.64494 58.5002 2.82452 55.954 2.82452H47.7629V8.55378Z" fill="#D6DBE4"></path> <path d="M66.1233 15.5H81.6432V13.1755H68.6022V8.82726H80.8214V6.50273H68.6022V2.82452H81.4681V0.5H66.1233V15.5Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M100.539 8.69052C102.17 9.14175 102.789 10.2083 102.789 12.4234C102.789 13.6677 102.911 14.7343 103.193 15.5H100.593C100.378 14.7069 100.324 13.6951 100.324 12.4234C100.324 10.6048 99.5425 10.0442 97.2253 10.0442H88.3875V15.5H85.9086V0.5H96.7672C101.024 0.513674 102.708 1.71696 102.708 5.20374C102.708 7.10438 102.062 8.15725 100.539 8.69052ZM88.3875 2.82452V7.70602H97.2253C99.4751 7.70602 100.243 7.06335 100.243 5.20374C100.243 3.42616 99.4751 2.82452 97.2253 2.82452H88.3875Z" fill="#D6DBE4"></path> <path d="M107.203 15.5H109.682V0.5H107.203V15.5Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M132.812 15.5H130.037L128.111 12.0953H116.956L115.029 15.5H112.254L120.984 0.5H124.096L132.812 15.5ZM122.533 2.20921L118.263 9.77074H126.804L122.533 2.20921Z" fill="#D6DBE4"></path>
           </svg>
@@ -501,171 +654,9 @@
           <svg style="margin:0 0 0 0;padding:0 0 0 0;" width="200px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
             <path fill="#D6DBE4" d="M256 46.305l-9.404 19.054-21.03 3.056 15.217 14.832-3.592 20.945L256 94.305l18.81 9.888-3.593-20.945 15.217-14.832-21.03-3.057L256 46.304zM167.566 72.63l-9.404 19.056-21.03 3.056 15.218 14.832-3.592 20.946 18.808-9.89 18.81 9.89-3.593-20.946L198 94.742l-21.03-3.056-9.404-19.055zm176.868 0l-9.405 19.056L314 94.742l15.217 14.832-3.592 20.946 18.81-9.89 18.807 9.89-3.592-20.946 15.217-14.832-21.03-3.056-9.403-19.055zm-243.868 67.425l-9.404 19.054-21.03 3.056 15.218 14.832-3.592 20.945 18.808-9.888 18.81 9.888-3.593-20.945L131 162.166l-21.03-3.057-9.404-19.055zm310.868 0l-9.405 19.054-21.03 3.056 15.217 14.832-3.592 20.945 18.81-9.888 18.807 9.888-3.592-20.945 15.217-14.832-21.03-3.057-9.403-19.055zM76.566 228.55l-9.404 19.054-21.03 3.056 15.218 14.832-3.592 20.945 18.808-9.888 18.81 9.887-3.593-20.945L107 250.66l-21.03-3.056-9.404-19.055zm358.868 0l-9.405 19.054L405 250.66l15.217 14.832-3.592 20.945 18.81-9.888 18.807 9.887-3.592-20.945 15.217-14.832-21.03-3.056-9.403-19.055zm-334.868 89.897l-9.404 19.055-21.03 3.057 15.218 14.83-3.592 20.946 18.808-9.89 18.81 9.89-3.593-20.945L131 340.56l-21.03-3.058-9.404-19.055zm310.868 0l-9.405 19.055L381 340.56l15.217 14.83-3.592 20.946 18.81-9.89 18.807 9.89-3.592-20.945 15.217-14.83-21.03-3.058-9.403-19.055zm-243.868 65.746l-9.404 19.055-21.03 3.057 15.218 14.832-3.592 20.945 18.808-9.89 18.81 9.89-3.593-20.945L198 406.305l-21.03-3.057-9.404-19.055zm176.868 0l-9.405 19.055-21.03 3.057 15.217 14.832-3.592 20.945 18.81-9.89 18.807 9.89-3.592-20.945 15.217-14.832-21.03-3.057-9.403-19.055zm-88.61 23.614l-9.404 19.056-21.03 3.055 15.217 14.834-3.59 20.943.385-.203-.035.203L256 455.898l18.633 9.797-.035-.203.386.203-3.59-20.943 15.215-14.834-21.03-3.055-9.404-19.056-.176.355-.176-.355z"/>
           </svg>
-          <p style="margin:0 0 0 0;padding:0 0 0 0;text-align:left;">European Union<br/>PHEMS</p>
 
         </div>
 
-        <div class="box1 glass" style="border-top-right-radius:6px;border-top-left-radius:6px;">
-          <h3>Traits</h3>
-          <div class="tsi">
-            <i class='bx bx-dumbbell' ></i>
-            <h5>Hard Working</h5>
-            <h6></h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxs-hand-right' ></i>
-            <h5>Direct</h5>
-            <h6></h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxs-briefcase' ></i>
-            <h5>Organised</h5>
-            <h6></h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxs-dog' ></i>
-            <h5>Loyal</h5>
-            <h6></h6>
-          </div>
-        </div>
-        <div class="box1 glass">
-          <h3>Methodologies</h3>
-          <div class="tsi">
-            <i class='bx bxs-grid' ></i>
-            <h5>Micro Services</h5>
-            <h6>within moderation</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bx-align-justify' ></i>
-            <h5>Clean Code</h5>
-            <h6>high standards</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bx-color'></i>
-            <h5>CI/CD</h5>
-            <h6>rapid iteration</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bx-check-double' ></i>
-            <h5>Five Nines</h5>
-            <h6>99.999% uptime</h6>
-          </div>
-        </div>
-        <div class="box1 glass">
-          <h3>Languages</h3>
-          <div class="tsi">
-            <i class='bx bxl-python'></i>
-            <h5>Python</h5>
-            <h6>10 years experience</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-javascript'></i>
-            <h5>JavaScript</h5>
-            <h6>10 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" style="fill:#fff;transform: ;msFilter:;"><path d="M19.24 3H4.76A1.76 1.76 0 0 0 3 4.76v14.48A1.76 1.76 0 0 0 4.76 21h14.48A1.76 1.76 0 0 0 21 19.24V4.76A1.76 1.76 0 0 0 19.24 3zm-5.8 10h-2.25v6.44H9.4V13H7.15v-1.46h6.29zm5.8 5.28a1.71 1.71 0 0 1-.67.74 3 3 0 0 1-1 .39 5.81 5.81 0 0 1-1.2.12 7 7 0 0 1-1.23-.11 4.52 4.52 0 0 1-1-.33v-1.71l-.06-.06h.06v.07a3.41 3.41 0 0 0 1 .54 3.06 3.06 0 0 0 1.13.2 2.58 2.58 0 0 0 .6-.06 1.47 1.47 0 0 0 .42-.17.75.75 0 0 0 .25-.25.69.69 0 0 0-.06-.74 1.24 1.24 0 0 0-.35-.33 3.12 3.12 0 0 0-.53-.3l-.67-.28a3.57 3.57 0 0 1-1.37-1 2 2 0 0 1-.46-1.33 2.16 2.16 0 0 1 .24-1.06 2.09 2.09 0 0 1 .66-.71 2.88 2.88 0 0 1 1-.42 5.11 5.11 0 0 1 1.19-.13 7 7 0 0 1 1.09.07 4.53 4.53 0 0 1 .88.23v1.65a2.42 2.42 0 0 0-.42-.24 3.58 3.58 0 0 0-.49-.17 3 3 0 0 0-.49-.1 2.45 2.45 0 0 0-.46 0 2.29 2.29 0 0 0-.56.06 1.54 1.54 0 0 0-.43.16.78.78 0 0 0-.26.25.63.63 0 0 0-.09.33.62.62 0 0 0 .1.35 1.19 1.19 0 0 0 .3.29 2.15 2.15 0 0 0 .46.28l.63.28a6.56 6.56 0 0 1 .84.42 2.65 2.65 0 0 1 .64.49 1.79 1.79 0 0 1 .42.63 2.48 2.48 0 0 1 .14.85 2.68 2.68 0 0 1-.25 1.08z"></path></svg>
-            <h5>TypeScript</h5>
-            <h6>5 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-go-lang'></i>
-            <h5>Go</h5>
-            <h6>3 years exp.</h6>
-          </div>
-        </div>
-        <div class="box1 glass">
-          <h3>Infrastructure</h3>
-          <div class="tsi">
-            <i class='bx bxl-docker'></i>
-            <h5>Docker</h5>
-            <h6>5 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-kubernetes'></i>
-            <h5>Kubernetes</h5>
-            <h6>3 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-aws'></i>
-            <h5>AWS</h5>
-            <h6>5 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bx-cloud'></i>
-            <h5>Redis Cloud</h5>
-            <h6>3 years exp.</h6>
-          </div>
-        </div>
-        <div class="box1 glass">
-          <h3>Web Libraries</h3>
-          <div class="tsi">
-            <i class='bx bxl-flask'></i>
-            <h5>Flask</h5>
-            <h6>10 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-react'></i>
-            <h5>React Native</h5>
-            <h6>5 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bx-server' ></i>
-            <h5>Fiber</h5>
-            <h6>3 years exp.</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxs-server' ></i>
-            <h5>Nginx</h5>
-            <h6>with systemd</h6>
-          </div>
-        </div>
-        <div class="box1 glass">
-          <h3>AI/ML Operations</h3>
-          <div class="tsi">
-            <i class='bx bxs-torch' ></i>
-            <h5>PyTorch</h5>
-            <h6>for Training</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxs-chip' ></i>
-            <h5>Cuda</h5>
-            <h6>for Nvidia</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-c-plus-plus' ></i>
-            <h5>Llama.cpp</h5>
-            <h6>for Python</h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxs-face' ></i>
-            <h5>Hugging Face</h5>
-            <h6>for Open Source</h6>
-          </div>
-        </div>
-        <div class="box1 glass" style="border-bottom-right-radius:6px;border-bottom-left-radius:6px;margin:0 0 96px 0;">
-          <h3>Supported Platforms</h3>
-          <div class="tsi">
-            <i class='bx bxl-tux'></i>
-            <h5>Linux</h5>
-            <h6></h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-microsoft'></i>
-            <h5>Windows</h5>
-            <h6></h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-apple' ></i>
-            <h5>Apple+</h5>
-            <h6></h6>
-          </div>
-          <div class="tsi">
-            <i class='bx bxl-android' ></i>
-            <h5>Android</h5>
-            <h6></h6>
-          </div>
-        </div>
       </article>
     </main>
     <script>

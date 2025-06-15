@@ -287,10 +287,12 @@
         height: 250px;
         max-height: 250px;
         border-bottom: 1px solid white;
-        background-color: green;
+        background-color: #000;
       }
       .project-header>.banner {
-        width: 100%;
+        min-width: 100%;
+        width: auto;
+        min-height: 250px;
         height: auto;
       }
       .project-header>.icon {
@@ -302,16 +304,49 @@
         border: 1px solid white;
         border-bottom: unset;
       }
+      .project-header>i {
+        display: hidden;
+        position: absolute;
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        width: 268px;
+        height: 268px;
+        text-align: center;
+        font-size: 72px;
+        transform: translate(-50%,-50%);
+      }
       .project-body {
         width: 100%;
-        height: 75%;
         padding: 2%;
       }
       .project-body>h2 {
-        margin-top: 28px;
+        margin-top: 16px;
+        font-size: 24px;
+      }
+      .project-body>* {
+        width: 100%;
+      }
+      .project-body>p {
+        font-size: 15px;
       }
       .project-body>i {
         color: #9a9a9a;
+        font-size: 12px;
+      }
+      .project {
+        transition: .5s ease-in-out;
+      }
+      .project:hover {
+        cursor: pointer;
+        box-shadow: 0 0 15px #fff;
+      }
+      .project:hover>.project-header>.banner {
+        opacity: 0.25;
+      }
+      .project:hover>.project-header>i {
+        display: block;
+        opacity: 1;
       }
       @media only screen and (max-width: 1380px) {
         article>header {
@@ -381,7 +416,7 @@
             <div style="margin:32px auto 16px auto;">
               <img src="https://easter.company/static/meta/favicon.ico" width="32" height="32" style="cursor:pointer;margin:0 16px;" onclick="window.location = 'https://easter.company/'"/>
               <img src="https://bashful-sh.github.io/static/meta/favicon.ico" width="32" height="32" style="cursor:pointer;margin:0 16px;" onclick="window.location = 'https://bashful-sh.github.io/'"/>
-              <img src="https://cs2assistant.github.io/static/meta/favicon.ico" width="32" height="32" style="cursor:pointer;margin:0 16px;" onclick="window.location = 'https://cs2assistant.github.io/'"/>
+              <img src="https://oceaster.github.io/static/assets/counter-strike.gif" width="32" height="32" style="cursor:pointer;margin:0 16px;" onclick="window.location = 'https://cs2assistant.github.io/'"/>
             </div>
             <div style="width:100%;max-width:640px;margin:32px auto 16px auto;">
               <div id="contact" class="cc" style="margin: 0 0 auto 0; padding: 0; display: flex; flex-direction: row; width: 100%; justify-content: space-evenly;">
@@ -706,10 +741,11 @@
           </svg>
         </div>
 
-        <div id="projects" class="box1 glass" style="width: 100%; min-height: 480px; max-height: 480px;">
+        <div id="projects" class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px;" onclick="window.location.href = 'https://www.letta.com/';">
           <div class="project-header">
             <img class="banner" src="https://oceaster.github.io/static/assets/lettabanner.webp"/>
             <img class="icon" src="https://oceaster.github.io/static/assets/letta.png"/>
+            <i class='bx bx-link-external'></i>
           </div>
           <div class="project-body">
             <h2>MemGPT</h2>
@@ -718,10 +754,11 @@
           </div>
         </div>
 
-        <div class="box1 glass" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;">
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://cs2assistant.github.io/';">
           <div class="project-header">
             <img class="banner" src="https://oceaster.github.io/static/assets/10785283.webp"/>
             <img class="icon" src="https://oceaster.github.io/static/assets/counter-strike.gif"/>
+            <i class='bx bx-link-external'></i>
           </div>
           <div class="project-body">
             <h2>Counter-Strike 2: Assistant</h2>
@@ -730,10 +767,11 @@
           </div>
         </div>
 
-        <div class="box1 glass" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;">
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://emperia.digital/Bloomingdales/holidayimmersiveentrance/index.htm';">
           <div class="project-header">
             <img class="banner" src="https://oceaster.github.io/static/assets/bloombanner.png"/>
             <img class="icon" src="https://oceaster.github.io/static/assets/bloomies.jpg"/>
+            <i class='bx bx-link-external'></i>
           </div>
           <div class="project-body">
             <h2>Bloomingdales VR</h2>
@@ -742,10 +780,11 @@
           </div>
         </div>
 
-        <div class="box1 glass" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;">
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://emperia.digital/lacoste/xmasvirtualexperience/index.htm';">
           <div class="project-header">
             <img class="banner" src="https://oceaster.github.io/static/assets/lacostebanner.png"/>
             <img class="icon" src="https://oceaster.github.io/static/assets/lacoste.jpg"/>
+            <i class='bx bx-link-external'></i>
           </div>
           <div class="project-body">
             <h2>Lacoste VR</h2>

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- App Title -->
     <title>Owen Easter, Lead Software Engineer, Highlands of Scotland</title>
-    <!-- App Data -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="revised" content="2025-04-19" />
@@ -12,13 +10,11 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Easter" />
-    <!-- OG Tags -->
     <meta property="og:title" content="Owen Easter, Lead Software Engineer, Highlands of Scotland" />
     <meta property="og:image" content="https://easter.company/static/meta/preview-banner.jpg" />
     <meta property="og:url" content="https://oceaster.github.io" />
     <meta property="og:type" content="website" />
     <meta name="og:description" content="Owen Easter is an experienced software engineer based in the Highlands of Scotland. With over 10 years of experience working with cutting edge technology in A.I, VR, Banking and Biomedical Research." />
-    <!-- Social Media Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Owen Easter, Lead Software Engineer, Highlands of Scotland" />
     <meta name="twitter:image" content="https://easter.company/static/meta/preview-banner.jpg?last_updated=2025-04-19" />
@@ -26,7 +22,6 @@
     <meta name="twitter:creator" content="@MrOwenEaster" />
     <meta name="twitter:description" content="Owen Easter is an experienced software engineer based in the Highlands of Scotland. With over 10 years of experience working with cutting edge technology in A.I, VR, Banking and Biomedical Research." />
     <meta property="fb:app_id" content="1541540286236316" />
-    <!-- CSS/Font/Icons Links -->
     <link rel="stylesheet" href="https://easter.company/static/css/background.css" />
     <link rel="icon" type="image/png" href="https://easter.company/static/meta/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="https://easter.company/static/meta/favicon.svg" />
@@ -38,15 +33,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" />
-    <!-- Default Style -->
     <style>
-      .f {display:flex;}
-      .r {flex-direction:row;}
-      .c {flex-direction:column;}
-      .block {display:block;}
-      .fixed {display:fixed;}
+      .f{display:flex;}
+      .r{display:flex;flex-direction:row;}
+      .rr{display:flex;flex-direction:row-reverse;}
+      .cr{display:flex;flex-direction:column-reverse;}
+      .block{display:block;}
+      .fixed{position:fixed;}
+      .absolute{position:absolute;}
+      .relative{position:relative;}
       .cc {display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-      .hide {pointer-events:none;opacity:0;}
+      .hide {display:hidden;pointer-events:none;opacity:0;}
       .glass {background-color:rgba(20, 20, 29, 0.45); border-radius: 4px; box-shadow: 1px 4px 10px rgba(20, 20, 29, 0.45); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);}
       ::-webkit-scrollbar {
         width: 8px;
@@ -178,9 +175,7 @@
         margin: 32px auto;
         padding: 0 0 0 0;
       }
-      #phb>a {
-        text-decoration: none;
-      }
+      #phb>a{text-decoration:none;}
       #phb>div, #phb>a>div {
         cursor: pointer;
         user-select: none;
@@ -211,20 +206,10 @@
         height: 128px;
         margin: auto auto;
       }
-      .tsi>i,tsi>img,.tsi>svg {
-        font-size: 32px;
-        width: 32px;
-        height: 32px;
-        margin: auto 0 0 0;
-      }
-      .tsi>h5 {
-        margin: 0 0 0 0;
-      }
-      .tsi>h6 {
-        margin:  0 0 auto 0;
-        color: #9a9a9a;
-      }
-      .box1 {
+      .tsi>i,tsi>img,.tsi>svg{font-size:32px;width:32px;height:32px;margin:auto 0 0 0;}
+      .tsi>h5{margin:0 0 0 0;}
+      .tsi>h6{margin:0 0 auto 0;color: #9a9a9a;}
+      .box1{
         display:flex;
         flex-direction:row;
         flex-wrap:wrap;
@@ -236,17 +221,23 @@
         padding: 0 0;
         border-radius: 0;
       }
-      .box1>h3 { padding: 28px;border-right: 1px solid #dadadada; width: 25%; }
-      #sh-app { z-index: 99 display: flex; flex-direction: column; position: fixed; pointer-events: all; top: 0; left: 0; width: 100vw; height: 100vh; }
-      .spin1s { animation: spin 1s linear infinite; }
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      .box1>h3{padding:28px;border-right:1px solid #dadadada;width:25%;}
+      .box2{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        overflow:hidden;
+        width: 100%;
+        max-width: 1270px;
+        height: fit-content;
+        margin: 0 auto 0 auto;
+        padding: 0 0;
+        border-radius: 0;
       }
-      .pricing-el {
-        width:100%;
-      }
-      .schedule-button {
+      #sh-app{z-index:99;display:flex;flex-direction:column;position:fixed;pointer-events:all;top:0;left:0;width:100vw;height:100vh;}
+      @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+      .spin1s{animation:spin 1s linear infinite;}
+      .schedule-button{
         border: unset;
         color: white;
         background-color: transparent;
@@ -260,126 +251,48 @@
         cursor: pointer;
         border-radius: 0px;
         border-bottom: 1px solid #dadada3a;
-        transition: background-color 0.3s ease;
+        transition: 0.3s ease;
       }
-      .schedule-button:hover {
-        background-color: #9a9a9a25;
+      .schedule-button:hover{background-color:#9a9a9a25;}
+      #nav-links{display:flex;flex-direction:row;margin:0 0 0 auto;padding:0 32px;}
+      #nav-links>a{display:flex;height:100%;padding:0 8px;margin:0 16px;}
+      #nav-links>a>p{margin:auto auto;}
+      .project-header{overflow:hidden;width:100%;min-height:250px;height:250px;max-height:250px;border-bottom:2px solid white;background-color:#000;}
+      .project-header>.banner{min-width:100%;width:auto;min-height:250px;height:auto;}
+      .project-header>.icon{position:absolute;top:calc(250px - 92px);left:46px;width:92px;height:92px;border:2px solid #fff;border-bottom:unset;}
+      .project-header>i{
+        display:hidden;
+        position:absolute;
+        opacity:0;
+        top:47.5%;
+        left:50%;
+        width:250px;
+        height:250px;
+        text-align:center;
+        font-size:72px;
+        transition:.5s ease-in-out;
+        transform:translate(-50%,-50%);
       }
-      #nav-links{
-        display: flex;
-        flex-direction: row;
-        margin: 0 0 0 auto;
-        padding: 0 32px;
-      }
-      #nav-links>a{
-        display: flex;
-        height: 100%;
-        padding: 0 8px;
-        margin: 0 16px;
-      }
-      #nav-links>a>p{
-        margin: auto auto;
-      }
-      .project-header {
-        overflow: hidden;
-        width: 100%;
-        min-height: 250px;
-        height: 250px;
-        max-height: 250px;
-        border-bottom: 1px solid white;
-        background-color: #000;
-      }
-      .project-header>.banner {
-        min-width: 100%;
-        width: auto;
-        min-height: 250px;
-        height: auto;
-      }
-      .project-header>.icon {
-        position: absolute;
-        top: calc(250px - 92px);
-        left: 46px;
-        width: 92px;
-        height: 92px;
-        border: 1px solid white;
-        border-bottom: unset;
-      }
-      .project-header>i {
-        display: hidden;
-        position: absolute;
-        opacity: 0;
-        top: 50%;
-        left: 50%;
-        width: 268px;
-        height: 268px;
-        text-align: center;
-        font-size: 72px;
-        transform: translate(-50%,-50%);
-      }
-      .project-body {
-        width: 100%;
-        padding: 2%;
-      }
-      .project-body>h2 {
-        margin-top: 16px;
-        font-size: 24px;
-      }
-      .project-body>* {
-        width: 100%;
-      }
-      .project-body>p {
-        font-size: 15px;
-      }
-      .project-body>i {
-        color: #9a9a9a;
-        font-size: 12px;
-      }
-      .project {
-        transition: .5s ease-in-out;
-      }
-      .project:hover {
-        cursor: pointer;
-        box-shadow: 0 0 15px #fff;
-      }
-      .project:hover>.project-header>.banner {
-        opacity: 0.25;
-      }
-      .project:hover>.project-header>i {
-        display: block;
-        opacity: 1;
-      }
-      @media only screen and (max-width: 1380px) {
-        article>header {
-          margin: 64px auto 0 auto;
-        }
-        nav {
-          top: 0;
-          left: 50%;
-          min-width: 100vw;
-          width: 100vw;
-          max-width: 100vw;
-          min-height: 68px;
-          height: 68px;
-          max-height: 68px;
-          margin: 0 0 0 0;
-        }
+      .project-body{width:100%;padding:2%;}
+      .project-body>h2{margin:0 0 0 0;padding:0 0 0 0;font-size:24px;}
+      .project-body>*{width:100%;}
+      .project-body>p{font-size:15px;}
+      .project-body>i{color:#9a9a9a;font-size:12px;}
+      .project{transition:.5s ease-in-out;}
+      .project:hover{cursor:pointer;box-shadow:0 0 8px #dadadada;}
+      .project:hover>.project-header>.banner{opacity: 0.25;}
+      .project:hover>.project-header>i{display:block;opacity:1;}
+      @media only screen and (max-width: 1380px){
+        main {margin:0 0 0 0;}
+        article>header {margin:64px auto 0 auto;}
+        nav {top:0;left:50%;min-width:100vw;width:100vw;max-width:100vw;min-height:68px;height:68px;max-height:68px;margin:0 0 0 0;}
         .box1>h3 {padding:28px;border-right:unset;border-bottom:1px solid #dadadada;width:100%;}
         .tsi {min-width:25%;}
-        #phb {
-          width: 100%;
-          max-width: unset;
-          margin: 16px 0 0 0 0;
-        }
+        #phb {width:100%;max-width:unset;margin:16px 0 0 0;}
       }
-      @media only screen and (max-width: 660px) {
-        #nav-links {
-          display: none;
-        }
-        #site-header {
-          width: 100%;
-          margin: auto auto;
-          padding: 16px;
-        }
+      @media only screen and (max-width: 660px){
+        #nav-links {display:none;}
+        #site-header {width:100%;margin:auto auto;padding:16px;}
       }
     </style>
   </head>
@@ -641,7 +554,8 @@
             </div>
           </div>
         </header>
-        <div id="clients" style="padding: 128px 0;display:flex;justify-content:space-evenly;align-items:center;text-align:center;flex-wrap:wrap;flex-direction:row;width:100%;">
+
+        <div id="clients" style="margin-top: 128px; padding: 128px 0; display: flex; justify-content: space-evenly; align-items: center; text-align: center; flex-wrap: wrap; flex-direction: row; width: 100%;">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 133 16"  class="d-inline-block align-top me-xl-1" alt="EMPERIA" style="margin-top:32px;">
             <path fill="#D6DBE4" d="M0.8125 15.5H16.3324V13.1755H3.29138V8.82726H16.2943V6.50328H0.8125V15.5Z" fill="#D6DBE4"></path><path d="M0.8125 2.8103V0.5H16.3324V2.8103H0.8125Z" fill="#D6DBE4"></path><path d="M37.1147 0.5L30.6616 9.60665L24.1006 0.5H20.5979V15.5H23.0767V3.12534L29.1123 11.4799H32.2243L38.2868 2.8382V15.5H40.7657V0.5H37.1147Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M45.284 0.5H55.4286C60.0226 0.513674 61.8952 2.0041 61.8952 5.68232C61.8952 9.40155 60.0091 10.8783 55.3881 10.8783H47.7629V15.5H45.284V0.5ZM47.7629 8.55378H55.954C58.5002 8.55378 59.4163 7.73336 59.4163 5.68232C59.4163 3.64494 58.5002 2.82452 55.954 2.82452H47.7629V8.55378Z" fill="#D6DBE4"></path> <path d="M66.1233 15.5H81.6432V13.1755H68.6022V8.82726H80.8214V6.50273H68.6022V2.82452H81.4681V0.5H66.1233V15.5Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M100.539 8.69052C102.17 9.14175 102.789 10.2083 102.789 12.4234C102.789 13.6677 102.911 14.7343 103.193 15.5H100.593C100.378 14.7069 100.324 13.6951 100.324 12.4234C100.324 10.6048 99.5425 10.0442 97.2253 10.0442H88.3875V15.5H85.9086V0.5H96.7672C101.024 0.513674 102.708 1.71696 102.708 5.20374C102.708 7.10438 102.062 8.15725 100.539 8.69052ZM88.3875 2.82452V7.70602H97.2253C99.4751 7.70602 100.243 7.06335 100.243 5.20374C100.243 3.42616 99.4751 2.82452 97.2253 2.82452H88.3875Z" fill="#D6DBE4"></path> <path d="M107.203 15.5H109.682V0.5H107.203V15.5Z" fill="#D6DBE4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M132.812 15.5H130.037L128.111 12.0953H116.956L115.029 15.5H112.254L120.984 0.5H124.096L132.812 15.5ZM122.533 2.20921L118.263 9.77074H126.804L122.533 2.20921Z" fill="#D6DBE4"></path>
           </svg>
@@ -741,42 +655,23 @@
           </svg>
         </div>
 
-        <div id="projects" class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px;" onclick="window.location.href = 'https://www.letta.com/';">
-          <div class="project-header">
-            <img class="banner" src="https://oceaster.github.io/static/assets/lettabanner.webp"/>
-            <img class="icon" src="https://oceaster.github.io/static/assets/letta.png"/>
-            <i class='bx bx-link-external'></i>
-          </div>
-          <div class="project-body">
-            <h2>MemGPT</h2>
-            <p>Major contributor to the early stages of MemGPT (now known as Letta AI). Provided long-term memory functions to LLM models and utilized RAG /w vector databases for user provided documents and resources. Was significantly ahead of its time, and is now common place in large scale LLM/AI platforms.</p>
-            <i>Published By: Letta AI</i>
-          </div>
-        </div>
-
-        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://cs2assistant.github.io/';">
-          <div class="project-header">
-            <img class="banner" src="https://oceaster.github.io/static/assets/10785283.webp"/>
-            <img class="icon" src="https://oceaster.github.io/static/assets/counter-strike.gif"/>
-            <i class='bx bx-link-external'></i>
-          </div>
-          <div class="project-body">
-            <h2>Counter-Strike 2: Assistant</h2>
-            <p>Researched and developed methods for mining counter-strike 2 for training data to fine tune narrow models which perform nieche tasks to provide accessbility &amp; competitive advantages for the game. Entirely for prototyping potential real world applications of A.I. in military environments.</p>
-            <i>Published By: CS2Assistant</i>
-          </div>
-        </div>
-
-        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://emperia.digital/Bloomingdales/holidayimmersiveentrance/index.htm';">
+        <div id="projects" class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://emperia.digital/Bloomingdales/holidayimmersiveentrance/index.htm';">
           <div class="project-header">
             <img class="banner" src="https://oceaster.github.io/static/assets/bloombanner.png"/>
             <img class="icon" src="https://oceaster.github.io/static/assets/bloomies.jpg"/>
             <i class='bx bx-link-external'></i>
           </div>
           <div class="project-body">
-            <h2>Bloomingdales VR</h2>
-            <p>Lead development of technical infrastructure &amp; final product of the bloomingdales 150th anniversary VR store. From interacting with the 3D environments, to the ecommerce interface, the technology I developed for this was then re-used as the standard template for all other VR experiences moving forward.</p>
-            <i>Published By: Emperia</i>
+            <h2>
+              Bloomingdales VR
+            </h2>
+            <p>
+              Lead development (hands on) from initial technical infrastructure & tooling, to release of the production bloomingdales 150th anniversary VR store application.
+              Using React, Web Assembly, and Python Web APIs with Redis caching mechanisms to provide a native video game level experience inside the browser.
+            </p>
+            <i>
+              @EmperiaVR
+            </i>
           </div>
         </div>
 
@@ -787,12 +682,169 @@
             <i class='bx bx-link-external'></i>
           </div>
           <div class="project-body">
-            <h2>Lacoste VR</h2>
-            <p>Enabled developers to rapidly reuse assets across experiences with standardized UIs and components, with fully automated deployment of production experiences. Tried and tested with the launch of the Lacoste VR Experience. First project to entirely use tooling made by myself, without any direct input from myself.</p>
-            <i>Published By: Emperia</i>
+            <h2>
+              Lacoste VR
+            </h2>
+            <p>
+              Enabled developers to rapidly reuse assets, build standardized UIs, and fully automated deployment to production with specialized internal tooling. The
+            </p>
+            <i>
+              @EmperiaVR
+            </i>
           </div>
         </div>
 
+        <div class="box2 glass project" style="width: 100%; min-height: 840px; max-height: 840px; margin-top: 128px;" onclick="window.location.href = 'https://emperiavr.com/';">
+          <div class="project-header" style="min-height:420px; height:420px; max-height:420px;">
+            <img class="banner" src="https://oceaster.github.io/static/assets/applevr.jpg" style="min-width:100%;width:auto;min-height:100%;height:auto;"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/emperia.png" style="top:calc(420px - 64px);left:calc(100% - 176px);width:128px;height:128px;border-radius:50%;"/>
+            <i class='bx bx-link-external' style="top: 286px;"></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              Emperia Creator Tools
+            </h2>
+            <h3>
+              Unreal Engine 5 Plugin &amp; SaaS Platform
+            </h3>
+            <p>
+              Lead full stack development for an Unreal Engine 5 plugin which attaches to an online interface (saas platform). Web VR SDK and online SaaS Platform for content delivery and deployment, also known as "Emperia Creator Tools".
+              Which allowed for an additional revenue stream for the company by empowering other organisations (and/or) consumers to build VR experiences utilizing our existing
+              technology and infrastructure.
+            </p>
+            <i>
+              @EmperiaVR
+            </i>
+          </div>
+        </div>
+
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://www.letta.com/';">
+          <div class="project-header">
+            <img class="banner" src="https://oceaster.github.io/static/assets/lettabanner.webp"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/letta.png"/>
+            <i class='bx bx-link-external'></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              MemGPT
+            </h2>
+            <p>
+              Major contributor to the early stages of MemGPT (now known as Letta AI).
+              Provided long-term memory functions to LLM models and utilized RAG /w vector databases for user provided documents and resources.
+              Was significantly ahead of its time, and is now common place in large scale LLM/AI platforms.
+            </p>
+            <i>
+              @Letta AI
+            </i>
+          </div>
+        </div>
+
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://cs2assistant.github.io/';">
+          <div class="project-header">
+            <img class="banner" src="https://oceaster.github.io/static/assets/10785283.webp"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/counter-strike.gif"/>
+            <i class='bx bx-link-external'></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              Counter-Strike 2: Assistant
+            </h2>
+            <p>
+              Researched and developed methods for mining counter-strike 2 for training data to fine tune narrow models which perform nieche tasks to provide accessbility &amp; competitive advantages for the game.
+              Entirely for prototyping potential real world applications of A.I. in military environments.
+            </p>
+            <i>
+              @CS2Assistant
+            </i>
+          </div>
+        </div>
+
+        <div class="box2 glass project" style="width: 100%; min-height: 840px; max-height: 840px; margin-top: 128px;" onclick="window.location.href = 'https://emperiavr.com/';">
+          <div class="project-header" style="min-height: 420px; height: 420px; max-height: 420px;">
+            <img class="banner" src="https://oceaster.github.io/static/assets/bashfulbanner.png" style="min-width: 100%; width: auto; min-height: 100%; height: auto; margin-top: -80px;"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/bashful.jpg" style="top: calc(420px - 64px); left: calc(100% - 176px); width: 128px; height: 128px; border-radius: 5%; border-top: unset;"/>
+            <i class='bx bx-link-external' style="top: 286px;"></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              Bashful
+            </h2>
+            <h3>
+              The bash terminal profile &amp; package manager
+            </h3>
+            <p>
+              Founding developer for an open source initiative to develop a super set for bash, modernising a fundamental piece of all software projects and developer environments.<br/>
+              Added features such as profile management for saving and loading configurations between systems and re-installs.<br/>
+              Added common reusuable commands for running a development HTTP(S) server.<br/>
+              Added AI assistant features such as `gcode` to generate short code snippets quickly &amp; directly from your CLI.<br/>
+              and much more!
+            </p>
+            <i>
+              @Bashful-sh
+            </i>
+          </div>
+        </div>
+        <!--
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://www.letta.com/';">
+          <div class="project-header">
+            <img class="banner" src="https://oceaster.github.io/static/assets/lettabanner.webp"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/letta.png"/>
+            <i class='bx bx-link-external'></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              Dexter
+            </h2>
+            <p>
+              ...
+            </p>
+            <i>
+              @EasterCompany
+            </i>
+          </div>
+        </div>
+
+        <div class="box1 glass project" style="width: 100%; min-height: 480px; max-height: 480px; margin-top: 128px;" onclick="window.location.href = 'https://cs2assistant.github.io/';">
+          <div class="project-header">
+            <img class="banner" src="https://oceaster.github.io/static/assets/10785283.webp"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/counter-strike.gif"/>
+            <i class='bx bx-link-external'></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              Overlord
+            </h2>
+            <p>
+              ...
+            </p>
+            <i>
+              @EasterCompany
+            </i>
+          </div>
+        </div>
+
+        <div class="box2 glass project" style="width: 100%; min-height: 840px; max-height: 840px; margin-top: 128px;" onclick="window.location.href = 'https://emperiavr.com/';">
+          <div class="project-header" style="min-height: 420px; height: 420px; max-height: 420px;">
+            <img class="banner" src="https://oceaster.github.io/static/assets/bashfulbanner.png" style="min-width: 100%; width: auto; min-height: 100%; height: auto; margin-top: -80px;"/>
+            <img class="icon" src="https://oceaster.github.io/static/assets/bashful.jpg" style="top: calc(420px - 64px); left: calc(100% - 176px); width: 128px; height: 128px; border-radius: 5%; border-top: unset;"/>
+            <i class='bx bx-link-external' style="top: 286px;"></i>
+          </div>
+          <div class="project-body">
+            <h2>
+              DexNet
+            </h2>
+            <h3>
+              Decentralized Distributed AI Compute Network
+            </h3>
+            <p>
+              ...
+            </p>
+            <i>
+              @EasterCompany
+            </i>
+          </div>
+        </div>
+        -->
       </article>
     </main>
     <script>
@@ -802,40 +854,44 @@
         if(content) { content.style.opacity = '1'; }
         if(loadingScreen) { loadingScreen.style.opacity = '0'; loadingScreen.style.pointerEvents = 'none'; }
       }
-      window.addEventListener('load', () => {setTimeout(loadPage, 1000)});function createMeeting() {
-      const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-      const eventTitle = "Owen/Client Introduction";
-      const eventDetails = "Initial client introduction consultation.";
-      const eventDates = "";
-      const inviteeEmail = "owen@easter.company";
-      let calendarUrl = `${baseUrl}&text=${encodeURIComponent(eventTitle)}`;
-      calendarUrl += `&details=${encodeURIComponent(eventDetails)}`;
-      calendarUrl += `&add=${encodeURIComponent(inviteeEmail)}`;
-      if (eventDates) {
-        calendarUrl += eventDates;
-      }
-      window.open(calendarUrl, '_blank');
-    }
-    function emailOwen() {
-      const email = "owen@easter.company";
-      const subject = "Enquiry from Website";
-      const body = "Hello Owen,\n";
-      let mailtoLink = `mailto:${email}`;
-      if (subject) {
-        mailtoLink += `?subject=${encodeURIComponent(subject)}`;
-        if (body) {
-          mailtoLink += `&body=${encodeURIComponent(body)}`;
+      window.addEventListener('load', () => {setTimeout(loadPage, 1000)});
+
+      function createMeeting() {
+        const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+        const eventTitle = "Owen/Client Introduction";
+        const eventDetails = "Initial client introduction consultation.";
+        const eventDates = "";
+        const inviteeEmail = "owen@easter.company";
+        let calendarUrl = `${baseUrl}&text=${encodeURIComponent(eventTitle)}`;
+        calendarUrl += `&details=${encodeURIComponent(eventDetails)}`;
+        calendarUrl += `&add=${encodeURIComponent(inviteeEmail)}`;
+        if (eventDates) {
+          calendarUrl += eventDates;
         }
-      } else if (body) {
-        mailtoLink += `?body=${encodeURIComponent(body)}`;
+        window.open(calendarUrl, '_blank');
       }
-      window.location.href = mailtoLink;
-    }
-    function callOwen() {
-      const phoneNumber = "+447506624694";
-      const telLink = `tel:${phoneNumber}`;
-      window.location.href = telLink;
-    }
+
+      function emailOwen() {
+        const email = "owen@easter.company";
+        const subject = "Enquiry from Website";
+        const body = "Hello Owen,\n";
+        let mailtoLink = `mailto:${email}`;
+        if (subject) {
+          mailtoLink += `?subject=${encodeURIComponent(subject)}`;
+          if (body) {
+            mailtoLink += `&body=${encodeURIComponent(body)}`;
+          }
+        } else if (body) {
+          mailtoLink += `?body=${encodeURIComponent(body)}`;
+        }
+        window.location.href = mailtoLink;
+      }
+
+      function callOwen() {
+        const phoneNumber = "+447506624694";
+        const telLink = `tel:${phoneNumber}`;
+        window.location.href = telLink;
+      }
     </script>
   </body>
 </html>

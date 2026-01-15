@@ -340,6 +340,56 @@
       border-color: var(--neon-blue);
     }
 
+    /* CV Section */
+    .cv-section {
+      padding: 100px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      padding: 12px 30px;
+      background: var(--neon-blue);
+      border: 1px solid var(--neon-blue);
+      color: #000;
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    }
+    .download-btn:hover {
+      background: transparent;
+      color: var(--neon-blue);
+      box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+    }
+
+    .pdf-container {
+      width: 100%;
+      height: 80vh;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    object {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
   </style>
 </head>
 <body>
@@ -353,7 +403,7 @@
     <a href="#skills" class="nav-link">Skills</a>
     <a href="#work" class="nav-link">Work</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="cv.html" class="nav-link">CV</a>
+    <a href="#cv" class="nav-link">CV</a>
   </nav>
 
   <!-- Hero -->
@@ -572,6 +622,22 @@
     </div>
 
   </div>
+
+  <!-- CV Section -->
+  <section class="cv-section" id="cv">
+    <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Curriculum Vitae</h2>
+    <a href="static/assets/Owen_Easter_CV.pdf" download="Owen_Easter_CV.pdf" class="download-btn">
+      <i class='bx bxs-download'></i> Download PDF
+    </a>
+    <div class="pdf-container">
+      <object data="static/assets/Owen_Easter_CV.pdf" type="application/pdf" width="100%" height="100%">
+        <p style="text-align:center; padding: 20px; color: var(--text-muted);">
+          Your browser does not support PDF embedding. 
+          <a href="static/assets/Owen_Easter_CV.pdf" style="color: var(--neon-blue);">Click here to download the PDF</a>.
+        </p>
+      </object>
+    </div>
+  </section>
 
   <footer style="text-align: center; padding: 50px 20px; color: #444; font-family: var(--font-mono); font-size: 0.8rem;">
     &copy; 2026 Owen Easter. All systems nominal.

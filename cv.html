@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CV - Owen Easter</title>
+  <meta name="description" content="Curriculum Vitae of Owen Easter - Lead Software Engineer.">
+  <meta name="theme-color" content="#050507">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+  <style>
+    :root {
+      --bg-color: #050507;
+      --glass-bg: rgba(20, 20, 20, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --neon-blue: #00f3ff;
+      --text-main: #ffffff;
+      --text-muted: #888888;
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .glass-nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 700px;
+      height: 60px;
+      background: rgba(20, 20, 20, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      z-index: 1000;
+      padding: 0 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--neon-blue);
+    }
+
+    @media (max-width: 600px) {
+      .glass-nav {
+        width: 95%;
+        top: 10px;
+        height: 50px;
+      }
+      .nav-link {
+        font-size: 0.7rem;
+      }
+    }
+
+    /* Grid Overlay */
+    .grid-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    }
+
+    /* Main Content */
+    .content-container {
+      flex: 1;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 120px 20px 50px; /* Top padding for navbar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      text-align: center;
+      background: linear-gradient(180deg, #fff 0%, #666 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      padding: 12px 30px;
+      background: var(--neon-blue);
+      border: 1px solid var(--neon-blue);
+      color: #000;
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    }
+    .download-btn:hover {
+      background: transparent;
+      color: var(--neon-blue);
+      box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+    }
+
+    .pdf-container {
+      width: 100%;
+      height: 80vh; /* Viewport height */
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="grid-overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="glass-nav">
+    <a href="index.html#home" class="nav-link">Home</a>
+    <a href="index.html#about" class="nav-link">About</a>
+    <a href="index.html#skills" class="nav-link">Skills</a>
+    <a href="index.html#work" class="nav-link">Work</a>
+    <a href="index.html#contact" class="nav-link">Contact</a>
+    <a href="cv.html" class="nav-link active">CV</a>
+  </nav>
+
+  <div class="content-container">
+    <h1>Curriculum Vitae</h1>
+    
+    <a href="static/assets/Owen_Easter_CV.pdf" download="Owen_Easter_CV.pdf" class="download-btn">
+      <i class='bx bxs-download'></i> Download PDF
+    </a>
+
+    <div class="pdf-container">
+      <!-- Fallback for browsers that don't support iframe PDF viewing nicely -->
+      <object data="static/assets/Owen_Easter_CV.pdf" type="application/pdf" width="100%" height="100%">
+        <p style="text-align:center; padding: 20px; color: var(--text-muted);">
+          Your browser does not support PDF embedding. 
+          <a href="static/assets/Owen_Easter_CV.pdf" style="color: var(--neon-blue);">Click here to download the PDF</a>.
+        </p>
+      </object>
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 30px 20px; color: #444; font-family: var(--font-mono); font-size: 0.8rem;">
+    &copy; 2026 Owen Easter. All systems nominal.
+  </footer>
+
+</body>
+</html>
